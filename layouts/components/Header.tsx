@@ -1,4 +1,7 @@
 "use client";
+import logo from "@/assets/images/logo2.png";
+import Image from "next/image";
+
 import { useState, useEffect } from "react";
 
 export default function Header() {
@@ -22,9 +25,11 @@ export default function Header() {
         {/* Logo */}
         <div className="flex">
           <a href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-gray-900 tracking-tight">
-              EZ - HuB
-            </span>
+             <Image
+                src={logo}
+                alt="Dashboard"
+                width={100}
+              />
           </a>
         </div>
 
@@ -98,7 +103,7 @@ export default function Header() {
           </a>
           <a
             href="/signup"
-            className="rounded-xl bg-blue-700 px-6 py-2 text-[15px] font-normal text-white shadow-sm hover:bg-blue-800 transition-all duration-200">
+            className="rounded-xl bg-blue-800 px-6 py-2 text-[15px] font-normal text-white shadow-sm hover:bg-blue-800 transition-all duration-200">
             Sign up
           </a>
         </div>
