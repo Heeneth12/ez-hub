@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 type AccentType = "purple" | "teal" | "pink";
 interface FeatureCardProps {
   title: string;
@@ -57,6 +57,10 @@ const FeatureCardLight: React.FC<FeatureCardProps> = ({
 };
 
 export default function FeaturesSectionLight() {
+  const [activeTab, setActiveTab] = useState("Poss");
+  const tabs = ["Poss", "Payroll", "Invoice", "Purchase", "Tasks"];
+  const themeBlue = "#1a73e8"; // A standard blue
+  const themeOrange = "#ea8600"; // A vibrant orange
   return (
     <section className="relative py-12 bg-[#F9FAFB] overflow-hidden font-sans text-gray-900">
       {/* Subtle Top Gradient Fade */}
@@ -64,18 +68,34 @@ export default function FeaturesSectionLight() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-24">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-7xl font-extrabold tracking-tighter text-gray-900 mb-6 leading-[1.1]">
             Keep everything in <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-900 via-orange-400 to-purple-800">
               one place.
             </span>
           </h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto font-normal leading-relaxed">
+          {/* <p className="text-mb text-gray-500 max-w-2xl mx-auto font-normal leading-relaxed">
             Forget complex project management tools. Our platform unifies your
             workflow in a single, beautiful interface.
-          </p>
+          </p> */}
         </div>
+
+        {/* Navigation Tabs */}
+        <nav className="flex justify-center gap-2 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-8 py-3.5 rounded-full text-base font-medium transition-all duration-300 ${
+                activeTab === tab
+                  ? "bg-orange-50 text-orange-600 font-semibold shadow-sm"
+                  : "bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              }`}>
+              {tab}
+            </button>
+          ))}
+        </nav>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
