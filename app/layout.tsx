@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/layouts/components/Header";
+import Footer from "@/layouts/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,22 +48,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
         <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Inter:wght@400;500;600&display=swap');
-        .font-brand { font-family: 'Kalam', cursive; }
-        .font-sans { font-family: 'Inter', sans-serif; }
-      `}</style>
+          @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Inter:wght@400;500;600&display=swap');
+          .font-brand { font-family: 'Kalam', cursive; }
+          .font-sans { font-family: 'Inter', sans-serif; }
+        `}</style>
       </head>
       <body
         style={{ backgroundColor: "#EDEDED" }}
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,20 +1,32 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/images/new.png";
 import Image from "next/image";
 
 const navigation = [
-  { name: "Apps", href: "#apps" },
-  { name: "Industries", href: "#industries" },
+  { name: "Home", href: "/" },
+  { 
+    name: "products", 
+    href: "#", 
+    // Added dropdown items here
+    dropdown: [
+      { name: "Finance", href: "/finance" },
+      { name: "Sales", href: "/sales" },
+      { name: "Websites", href: "/websites" },
+      { name: "Inventory", href: "/inventory" },
+      { name: "HR", href: "/hr" },
+    ]
+  }, 
   { name: "Community", href: "#community" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Help", href: "#help" },
+  { name: "About Us", href: "/about" },
 ];
 
 export default function Header() {
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -29,7 +41,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b ${
         scrolled
-          ? "backdrop-blur-md border-gray-900 shadow-sm py-2"
+          ? "backdrop-blur-md border-gray-800 bg-black/50 shadow-sm py-2"
           : "bg-transparent border-transparent py-4"
       }`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 font-sans">
@@ -39,16 +51,39 @@ export default function Header() {
           </a>
         </div>
 
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden lg:flex lg:gap-x-8 items-center">
           {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="relative text-[15px] font-medium text-white transition-colors group py-1">
-              {item.name}
-              {/* Animated Underline */}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
+            <div key={item.name} className="relative group">
+              {item.dropdown ? (
+                <>
+                  <button className="flex items-center gap-1 text-[15px] font-medium text-white transition-colors group-hover:text-gray-300 py-2 outline-none">
+                    {item.name}
+                    <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                  </button>
+                  <div className="absolute left-0 top-full mt-2 w-48 origin-top-right rounded-xl bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out overflow-hidden">
+                    <div className="py-1">
+                      {item.dropdown.map((subItem) => (
+                        <a
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-4 py-3 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <a
+                  href={item.href}
+                  className="relative text-[15px] font-medium text-white transition-colors group py-1"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full"></span>
+                </a>
+              )}
+            </div>
           ))}
         </div>
 
@@ -71,7 +106,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors">
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200 hover:bg-white/10 transition-colors">
             <span className="sr-only">Open main menu</span>
             <Menu className="h-7 w-7" aria-hidden="true" />
           </button>
@@ -87,7 +122,7 @@ export default function Header() {
         }`}>
         {/* Backdrop */}
         <div
-          className="fixed inset-0 bg-gray-900/20 backdrop-blur-sm"
+          className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
         />
 
@@ -98,7 +133,7 @@ export default function Header() {
           }`}>
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-3xl font-bold text-white">odoo</span>
+              <span className="text-3xl font-bold text-black">EZH</span>
             </a>
             <button
               type="button"
@@ -112,15 +147,48 @@ export default function Header() {
           <div className="mt-8 flow-root font-sans">
             <div className="-my-6 divide-y divide-gray-100">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#714B67] transition-colors">
-                    {item.name}
-                  </a>
-                ))}
+                {navigation.map((item) =>
+                  item.dropdown ? (
+                    /* Mobile Dropdown Logic */
+                    <div key={item.name} className="-mx-3">
+                      <button
+                        type="button"
+                        onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      >
+                        {item.name}
+                        <ChevronDown
+                          className={`h-5 w-5 flex-none transition-transform ${
+                            mobileDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                      {mobileDropdownOpen && (
+                        <div className="mt-2 space-y-2 pl-4">
+                          {item.dropdown.map((subItem) => (
+                            <a
+                              key={subItem.name}
+                              href={subItem.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-700 hover:bg-gray-50 hover:text-[#e05c10]"
+                            >
+                              {subItem.name}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#714B67] transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  )
+                )}
               </div>
 
               <div className="py-6">

@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  ArrowRight,
+  BarChart3,
+  Box,
+  ChevronRight,
+  CreditCard,
+  Users,
+} from "lucide-react";
 import React, { useState } from "react";
 type AccentType = "purple" | "teal" | "pink";
 interface FeatureCardProps {
@@ -8,6 +16,46 @@ interface FeatureCardProps {
   renderImage?: () => React.ReactNode;
   accent: AccentType;
 }
+
+// --- Data Configuration ---
+const solutions = [
+  {
+    id: "inventory",
+    title: "Smart Inventory Management",
+    description:
+      "Track stock in real-time, automate reordering, and reduce wastage with our AI-driven inventory system tailored for high-volume businesses.",
+    icon: Box,
+    color: "bg-blue-50 text-blue-600",
+    imageColor: "bg-blue-100",
+  },
+  {
+    id: "billing",
+    title: "Automated Billing & Invoicing",
+    description:
+      "Generate professional invoices instantly, handle recurring payments, and streamline your accounts receivable process.",
+    icon: CreditCard,
+    color: "bg-orange-50 text-orange-600",
+    imageColor: "bg-[#FFF0E6]", // Matches the warm tone in your image
+  },
+  {
+    id: "payroll",
+    title: "Seamless Payroll Processing",
+    description:
+      "Automate salary calculations, tax deductions, and compliance reporting. Ensure your team gets paid on time, every time.",
+    icon: Users,
+    color: "bg-green-50 text-green-600",
+    imageColor: "bg-green-100",
+  },
+  {
+    id: "reporting",
+    title: "Advanced Reporting & Analytics",
+    description:
+      "Gain deep insights into your business performance with customizable dashboards and real-time data visualization.",
+    icon: BarChart3,
+    color: "bg-purple-50 text-purple-600",
+    imageColor: "bg-purple-100",
+  },
+];
 
 const FeatureCardLight: React.FC<FeatureCardProps> = ({
   title,
@@ -58,6 +106,7 @@ const FeatureCardLight: React.FC<FeatureCardProps> = ({
 
 export default function FeaturesSectionLight() {
   const [activeTab, setActiveTab] = useState("Poss");
+  const [activeCard, setActiveCard] = useState(0);
   const tabs = ["Poss", "Payroll", "Invoice", "Purchase", "Tasks"];
   const themeBlue = "#1a73e8"; // A standard blue
   const themeOrange = "#ea8600"; // A vibrant orange
@@ -96,56 +145,99 @@ export default function FeaturesSectionLight() {
             </button>
           ))}
         </nav>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* LEFT COLUMN: Interactive List */}
+            <div className="flex flex-col">
+              {solutions.map((item, index) => (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveCard(index)}
+                  className={`group cursor-pointer border-b border-gray-100 py-6 transition-all duration-300 ${
+                    activeCard === index
+                      ? "opacity-100"
+                      : "opacity-60 hover:opacity-100"
+                  }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3
+                      className={`text-xl md:text-2xl font-semibold transition-colors ${
+                        activeCard === index
+                          ? "text-slate-900"
+                          : "text-slate-500"
+                      }`}>
+                      {item.title}
+                    </h3>
+                    {/* Mobile Chevron indicator */}
+                    <ChevronRight
+                      className={`w-5 h-5 lg:hidden transition-transform ${
+                        activeCard === index
+                          ? "rotate-90 text-red-500"
+                          : "text-gray-300"
+                      }`}
+                    />
+                  </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {/* Card 1 */}
-          <FeatureCardLight
-            title="Seamless Collaboration"
-            description="Work together with your team effortlessly, share tasks, and update progress in real-time."
-            accent="purple"
-            renderImage={() => (
-              <h1 className="text-purple-400 font-bold text-2xl">
-                Image Placeholder
-              </h1>
-            )}
-          />
+                  {/* Expandable Content */}
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      activeCard === index
+                        ? "max-h-40 opacity-100 mt-2"
+                        : "max-h-0 opacity-0"
+                    }`}>
+                    <p className="text-slate-500 text-lg leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+                    <button className="text-red-500 font-semibold text-sm flex items-center hover:gap-2 transition-all">
+                      Explore <ArrowRight className="w-4 h-4 ml-1" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-          {/* Card 2 */}
-          <FeatureCardLight
-            title="Time Management Tools"
-            description="Optimize your time with integrated tools like timers, reminders, and schedules."
-            accent="teal"
-            renderImage={() => (
-              <h1 className="text-teal-400 font-bold text-2xl">
-                Image Placeholder
-              </h1>
-            )}
-          />
+            {/* RIGHT COLUMN: Dynamic Image Card */}
+            <div className="relative h-100 md:h-125 w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200/50 transition-all duration-500">
+              {solutions.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`absolute inset-0 w-full h-full p-10 flex flex-col items-center justify-center transition-opacity duration-500 ${
+                    activeCard === index ? "opacity-100 z-10" : "opacity-0 z-0"
+                  } ${item.imageColor}`}>
+                  {/* Placeholder Illustration Logic */}
+                  <div className="relative z-10 text-center">
+                    {/* White Card behind icon to mimic the 'POSS' badge look */}
+                    <div className="absolute top-0 left-0 bg-white/40 backdrop-blur-md rounded-xl px-4 py-2 flex items-center gap-2 -translate-y-20 -translate-x-10 shadow-sm">
+                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                      <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                        EZ Hub App
+                      </span>
+                    </div>
 
-          {/* Card 3 */}
-          <FeatureCardLight
-            title="Advanced task tracking"
-            description="A birds eye view of your entire behaviour and productivity."
-            accent="pink"
-            renderImage={() => (
-              <h1 className="text-pink-400 font-bold text-2xl">
-                Image Placeholder
-              </h1>
-            )}
-          />
+                    {/* Main Icon Representation */}
+                    <item.icon
+                      strokeWidth={1}
+                      className="w-48 h-48 text-slate-800/80 mb-8 drop-shadow-xl mx-auto"
+                    />
 
-          {/* Card 4 */}
-          <FeatureCardLight
-            title="Customizable Workspaces"
-            description="Tailor your environment with widgets, themes, and personalized views."
-            accent="purple"
-            renderImage={() => (
-              <h1 className="text-indigo-400 font-bold text-2xl">
-                Image Placeholder
-              </h1>
-            )}
-          />
+                    {/* Abstract Characters / UI Elements Placeholder */}
+                    <div className="flex justify-center gap-4 opacity-50">
+                      <div className="w-16 h-2 bg-slate-900 rounded-full"></div>
+                      <div className="w-8 h-2 bg-slate-900 rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Background Pattern */}
+                  <div
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(circle, #000 1px, transparent 1px)",
+                      backgroundSize: "20px 20px",
+                    }}></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
