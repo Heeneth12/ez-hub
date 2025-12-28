@@ -1,136 +1,131 @@
-import { DollarSign, ShoppingCart, Building2, ArrowRight } from "lucide-react";
+"use client";
 
-export default function FeatureSections() {
-  type ColorKey = "blue" | "green" | "purple";
+import React from "react";
+type AccentType = "purple" | "teal" | "pink";
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  renderImage?: () => React.ReactNode;
+  accent: AccentType;
+}
 
-  type Product = {
-    id: string;
-    icon: any;
-    title: string;
-    description: string;
-    color: ColorKey;
-    features: string[];
-  };
-
-  const products: Product[] = [
-    {
-      id: "payroll",
-      icon: DollarSign,
-      title: "Payroll System",
-      description: "Automate salary processing, tax calculations, and compliance reporting with ease.",
-      color: "blue",
-      features: [
-        "Automated salary calculations",
-        "Tax compliance & reporting",
-        "Direct deposit integration",
-        "Employee self-service portal"
-      ]
-    },
-    {
-      id: "pos",
-      icon: ShoppingCart,
-      title: "POS System",
-      description: "Complete point-of-sale solution for retail and hospitality businesses.",
-      color: "green",
-      features: [
-        "Real-time inventory tracking",
-        "Multi-payment method support",
-        "Sales analytics & reports",
-        "Customer loyalty programs"
-      ]
-    },
-    {
-      id: "his",
-      icon: Building2,
-      title: "HIS System",
-      description: "Comprehensive healthcare information system for modern medical facilities.",
-      color: "purple",
-      features: [
-        "Electronic health records",
-        "Appointment scheduling",
-        "Patient portal access",
-        "Medical billing integration"
-      ]
-    }
-  ];
-
-  const getColorClasses = (color: ColorKey) =>  {
-    const colors: Record<ColorKey, { icon: string; hover: string; text: string }> = {
-      blue: {
-        icon: "bg-blue-600 text-white",
-        hover: "hover:border-blue-200",
-        text: "text-blue-600"
-      },
-      green: {
-        icon: "bg-green-600 text-white",
-        hover: "hover:border-green-200",
-        text: "text-green-600"
-      },
-      purple: {
-        icon: "bg-purple-600 text-white",
-        hover: "hover:border-purple-200",
-        text: "text-purple-600"
-      }
-    };
-    return colors[color];
+const FeatureCardLight: React.FC<FeatureCardProps> = ({
+  title,
+  description,
+  renderImage,
+  accent,
+}) => {
+  const accentStyles: Record<AccentType, string> = {
+    purple: "from-purple-100 via-white to-white group-hover:border-purple-200",
+    teal: "from-teal-100 via-white to-white group-hover:border-teal-200",
+    pink: "from-pink-100 via-white to-white group-hover:border-pink-200",
   };
 
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-blue-600 tracking-wide uppercase mb-3">
-            Our Products
-          </h2>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Three powerful solutions for your business
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Choose the right solution for your needs. Each product is designed to streamline operations and boost productivity.
+    <div
+      className={`group relative rounded-4xl bg-white border border-gray-200 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 ${
+        accentStyles[accent] || ""
+      }`}>
+      {/* Dynamic Glow Background (Subtle Wash on Hover) */}
+      <div
+        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-[radial-gradient(circle_at_top,var(--tw-gradient-stops))] ${accentStyles[accent]} pointer-events-none`}></div>
+
+      <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+        {/* Image Section (Top) - Placeholder */}
+        <div className="mb-10 flex items-center justify-center min-h-[250px] bg-gray-50 rounded-2xl border border-gray-100 border-dashed">
+          {renderImage ? (
+            renderImage()
+          ) : (
+            <h1 className="text-gray-400 font-bold text-xl">
+              Image Placeholder
+            </h1>
+          )}
+        </div>
+
+        {/* Text Section (Bottom) */}
+        <div className="mt-auto text-center md:text-left">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-gray-900 group-hover:to-gray-600 transition-all duration-500">
+            {title}
+          </h3>
+          <p className="text-lg text-gray-500 leading-relaxed max-w-md mx-auto md:mx-0 font-medium">
+            {description}
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {products.map((product) => {
-            const Icon = product.icon;
-            const colors = getColorClasses(product.color);
-            
-            return (
-              <div
-                key={product.id}
-                className={`bg-white rounded-lg border border-gray-200 p-8 transition-all duration-200 ${colors.hover} hover:shadow-lg`}
-              >
-                {/* Icon */}
-                <div className={`w-12 h-12 rounded-lg ${colors.icon} flex items-center justify-center mb-6`}>
-                  <Icon size={24} />
-                </div>
+      </div>
+    </div>
+  );
+};
 
-                {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {product.title}
-                </h3>
-                
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                  {product.description}
-                </p>
+export default function FeaturesSectionLight() {
+  return (
+    <section className="relative py-12 bg-[#F9FAFB] overflow-hidden font-sans text-gray-900">
+      {/* Subtle Top Gradient Fade */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-white to-transparent pointer-events-none"></div>
 
-                {/* Features List */}
-                <ul className="space-y-3 mb-6">
-                  {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-gray-700">
-                      <span className="text-gray-400 mr-3">•</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-24">
+          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tighter text-gray-900 mb-6 leading-[1.1]">
+            Keep everything in <br />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-900 via-orange-400 to-purple-800">
+              one place.
+            </span>
+          </h2>
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto font-normal leading-relaxed">
+            Forget complex project management tools. Our platform unifies your
+            workflow in a single, beautiful interface.
+          </p>
+        </div>
 
-                {/* CTA Link */}
-                <button className={`flex items-center gap-2 text-sm font-semibold ${colors.text} hover:gap-3 transition-all`}>
-                  Learn more
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            );
-          })}
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {/* Card 1 */}
+          <FeatureCardLight
+            title="Seamless Collaboration"
+            description="Work together with your team effortlessly, share tasks, and update progress in real-time."
+            accent="purple"
+            renderImage={() => (
+              <h1 className="text-purple-400 font-bold text-2xl">
+                Image Placeholder
+              </h1>
+            )}
+          />
+
+          {/* Card 2 */}
+          <FeatureCardLight
+            title="Time Management Tools"
+            description="Optimize your time with integrated tools like timers, reminders, and schedules."
+            accent="teal"
+            renderImage={() => (
+              <h1 className="text-teal-400 font-bold text-2xl">
+                Image Placeholder
+              </h1>
+            )}
+          />
+
+          {/* Card 3 */}
+          <FeatureCardLight
+            title="Advanced task tracking"
+            description="A birds eye view of your entire behaviour and productivity."
+            accent="pink"
+            renderImage={() => (
+              <h1 className="text-pink-400 font-bold text-2xl">
+                Image Placeholder
+              </h1>
+            )}
+          />
+
+          {/* Card 4 */}
+          <FeatureCardLight
+            title="Customizable Workspaces"
+            description="Tailor your environment with widgets, themes, and personalized views."
+            accent="purple"
+            renderImage={() => (
+              <h1 className="text-indigo-400 font-bold text-2xl">
+                Image Placeholder
+              </h1>
+            )}
+          />
         </div>
       </div>
     </section>

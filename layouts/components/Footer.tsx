@@ -1,203 +1,157 @@
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight, Send } from "lucide-react";
-import { useState } from "react";
+import React from 'react';
+import { Github, Twitter, Linkedin, Facebook, Send, Globe } from 'lucide-react';
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = () => {
-    if (email) {
-      setSubscribed(true);
-      setTimeout(() => {
-        setSubscribed(false);
-        setEmail("");
-      }, 3000);
-    }
+  
+  const links = {
+    product: [
+      { name: 'Features', href: '#' },
+      { name: 'Pricing', href: '#' },
+      { name: 'Integrations', href: '#' },
+      { name: 'Enterprise', href: '#' },
+      { name: 'Changelog', href: '#' },
+    ],
+    company: [
+      { name: 'About Us', href: '#' },
+      { name: 'Careers', href: '#' },
+      { name: 'Blog', href: '#' },
+      { name: 'Contact', href: '#' },
+      { name: 'Partners', href: '#' },
+    ],
+    resources: [
+      { name: 'Community', href: '#' },
+      { name: 'Help Center', href: '#' },
+      { name: 'API Docs', href: '#' },
+      { name: 'Status', href: '#' },
+    ],
+    legal: [
+      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms of Service', href: '#' },
+      { name: 'Cookie Policy', href: '#' },
+    ]
   };
 
-  const products = [
-    { name: "Payroll System", href: "#payroll" },
-    { name: "POS System", href: "#pos" },
-    { name: "HIS System", href: "#his" }
-  ];
-
-  const company = [
-    { name: "About Us", href: "#about" },
-    { name: "Careers", href: "#careers" },
-    { name: "Contact", href: "#contact" },
-    { name: "Blog", href: "#blog" }
-  ];
-
-  const resources = [
-    { name: "Documentation", href: "#docs" },
-    { name: "Help Center", href: "#help" },
-    { name: "API Reference", href: "#api" },
-    { name: "Community", href: "#community" }
-  ];
-
-  const legal = [
-    { name: "Privacy Policy", href: "#privacy" },
-    { name: "Terms of Service", href: "#terms" },
-    { name: "Cookie Policy", href: "#cookies" },
-    { name: "GDPR", href: "#gdpr" }
-  ];
-
-  const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" }
-  ];
-
   return (
-    <footer className="bg-linear-to-br from-gray-50 to-gray-100 border-t border-gray-200">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Brand & Newsletter Column */}
-          <div className="lg:col-span-4">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">EZ Hub</h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              Empowering businesses with innovative SaaS solutions for payroll, point-of-sale, and healthcare management.
+    <footer className="relative bg-[#050505] pt-20 pb-10 border-t border-white/10 font-sans text-white overflow-hidden">
+      
+      {/* Static Background Glow (No Motion) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-white-500/50 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white-900/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
+          
+          {/* Brand Column (Span 2) */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center">
+                <span className="font-bold text-white">O</span>
+              </div>
+              <span className="text-xl font-bold tracking-tight">Odoo Bits</span>
+            </div>
+            <p className="text-gray-400 leading-relaxed mb-8 max-w-xs text-sm">
+              Empowering businesses with a unified platform. Simple, efficient, and designed for the modern era.
             </p>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Mail size={16} className="text-blue-600" />
-                <span>hello@ezhub.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Phone size={16} className="text-blue-600" />
-                <span>+1 (555) 000-0000</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-gray-600">
-                <MapPin size={16} className="text-blue-600" />
-                <span>Melbourne VIC 3000, AU</span>
+            {/* Newsletter Input */}
+            <div className="max-w-xs">
+              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 block">
+                Subscribe to our newsletter
+              </label>
+              <div className="relative">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  className="w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 text-sm text-gray-300 placeholder-gray-600 focus:outline-none focus:border-white-500/50 focus:bg-white/10 transition-colors"
+                />
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/10 hover:bg-white/20 rounded-md text-gray-300 transition-colors">
+                  <Send size={14} />
+                </button>
               </div>
             </div>
           </div>
 
           {/* Links Columns */}
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {/* Products */}
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Products</h4>
-              <ul className="space-y-3">
-                {products.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 group"
-                    >
-                      <span>{item.name}</span>
-                      <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Company</h4>
-              <ul className="space-y-3">
-                {company.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 group"
-                    >
-                      <span>{item.name}</span>
-                      <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Resources</h4>
-              <ul className="space-y-3">
-                {resources.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 group"
-                    >
-                      <span>{item.name}</span>
-                      <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Legal</h4>
-              <ul className="space-y-3">
-                {legal.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 group"
-                    >
-                      <span>{item.name}</span>
-                      <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            {/* Copyright */}
-            <p className="text-sm text-gray-600">
-              © {new Date().getFullYear()} EZ Hub. All rights reserved.
-            </p>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
-                  >
-                    <Icon size={18} />
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">Product</h3>
+            <ul className="space-y-4">
+              {links.product.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                    {link.name}
                   </a>
-                );
-              })}
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded bg-green-100 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                </div>
-                <span className="text-xs font-semibold text-gray-600">SSL Secured</span>
-              </div>
-              <div className="text-xs text-gray-400">|</div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded bg-blue-100 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                </div>
-                <span className="text-xs font-semibold text-gray-600">GDPR Compliant</span>
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">Company</h3>
+            <ul className="space-y-4">
+              {links.company.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">Resources</h3>
+            <ul className="space-y-4">
+              {links.resources.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+           <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">Legal</h3>
+            <ul className="space-y-4">
+              {links.legal.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-gray-500 text-sm">
+            © 2024 Odoo Bits Inc. All rights reserved.
+          </div>
+
+          <div className="flex items-center gap-6">
+            <a href="#" className="text-gray-500 hover:text-white transition-colors">
+              <Github size={20} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-blue-400 transition-colors">
+              <Twitter size={20} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors">
+              <Linkedin size={20} />
+            </a>
+             <a href="#" className="text-gray-500 hover:text-blue-500 transition-colors">
+              <Facebook size={20} />
+            </a>
+          </div>
+          
+           <div className="hidden md:flex items-center gap-2 text-sm text-gray-500 border border-white/10 rounded-full px-3 py-1 bg-white/5">
+              <Globe size={14} />
+              <span>English (US)</span>
+            </div>
         </div>
       </div>
     </footer>

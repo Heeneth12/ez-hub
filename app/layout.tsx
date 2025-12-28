@@ -51,6 +51,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Inter:wght@400;500;600&display=swap');
+        .font-brand { font-family: 'Kalam', cursive; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+      `}</style>
+      </head>
       <body
         style={{ backgroundColor: "#EDEDED" }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
