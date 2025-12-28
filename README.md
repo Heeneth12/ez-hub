@@ -11,9 +11,7 @@ It provides powerful tools for **billing**, **point of sale (POS)**, **payroll m
 🔗 **Live Demo:** https://ez-hub.com  
 
 > *(Mentioning a live link is completely fine and recommended for SaaS & portfolio projects)*
-> ## 🖼️ Application Preview
-> <img width="2861" height="1539" alt="image" src="https://github.com/user-attachments/assets/4bd0802f-5a93-4791-bf95-917fd9f3eb26" />
-
+> 
 <img width="2861" height="1539" alt="image" src="https://github.com/user-attachments/assets/38306b4f-2cd5-4a3b-933b-178aa98002f5" />
 
 
