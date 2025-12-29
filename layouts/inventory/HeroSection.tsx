@@ -36,11 +36,11 @@ export default function HeroSection() {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
           {/* Fixed bg-linear-to-b -> bg-gradient-to-b */}
           <span className="block text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/50">
-            Total control over
+            Modern inventory software
           </span>
           {/* Fixed bg-linear-to-br -> bg-gradient-to-br */}
           <span className="block text-transparent bg-clip-text bg-linear-to-br from-indigo-300 via-white to-purple-300">
-             your supply chain.
+             for Indian businesses
           </span>
         </h1>
 
