@@ -18,7 +18,6 @@ const navigation = [
       { name: "HR", href: "/hr" },
     ]
   }, 
-  { name: "Community", href: "#community" },
   { name: "About Us", href: "/about" },
 ];
 
