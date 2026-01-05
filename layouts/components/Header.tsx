@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/images/new.png";
 import Image from "next/image";
@@ -10,13 +10,10 @@ const navigation = [
   {
     name: "products",
     href: "#",
-    // Added dropdown items here
     dropdown: [
       { name: "Inventory", href: "/inventory" },
-      { name: "Finance", href: "/finance" },
-      { name: "Sales", href: "/sales" },
-      { name: "Websites", href: "/websites" },
-      { name: "HR", href: "/hr" },
+      { name: "Bookings", href: "/Bookings " },
+      { name: "Assist", href: "/Assist" },
     ],
   },
   { name: "About Us", href: "/about" },
@@ -201,7 +198,7 @@ export default function Header() {
                 </a>
                 <div className="mt-8 text-center">
                   <p className="text-xs text-gray-400">
-                    Join 10,000+ companies growing with Odoo
+                    Join 10,000+ companies growing with EZ Hub
                   </p>
                 </div>
               </div>

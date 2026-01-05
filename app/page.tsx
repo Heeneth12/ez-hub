@@ -1,9 +1,12 @@
 import HeroSection from "@/layouts/components/HeroSection";
 import FeatureSections from "@/layouts/components/FeatureSections";
+import Header from "@/layouts/components/Header";
+import Footer from "@/layouts/components/Footer";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <main className="grow">
         <article>
           <section id="hero">
@@ -17,6 +20,7 @@ export default function Home() {
           </section>
         </article>
       </main>
+      <Footer />
     </>
   );
 }

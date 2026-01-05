@@ -64,9 +64,7 @@ export default function RootLayout({
         style={{ backgroundColor: "#EDEDED" }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
