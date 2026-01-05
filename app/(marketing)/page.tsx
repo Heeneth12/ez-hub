@@ -1,9 +1,10 @@
-import HeroSection from "@/layouts/components/HeroSection";
-import FeatureSections from "@/layouts/components/FeatureSections";
-import FinalCTA from "@/layouts/components/FinalCTA";
+import HeroSection from "@/layouts/marketing/HeroSection";
+import FeatureSections from "@/layouts/marketing/FeatureSections";
+import FinalCTA from "@/layouts/marketing/FinalCTA";
 
 export default function Home() {
   return (
+    
     <article>
       <section id="hero" aria-label="Introduction">
         <HeroSection />

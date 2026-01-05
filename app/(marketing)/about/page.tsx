@@ -55,35 +55,9 @@ export default function AboutUsDark() {
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight leading-tight">
             We are building the <br />
             <span className="relative inline-block px-4">
-              <span className="relative z-10 text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-orange-400 animate-gradient-x">
+              <span className="relative z-10 text-transparent bg-clip-text bg-linear-to-r from-gray-200 via-red-400 to-orange-700 animate-gradient-x">
                 future of work.
               </span>
-              {/* Neon Underline SVG */}
-              <svg
-                className="absolute bottom-2 left-0 w-full h-6 text-purple-500/50 -z-10 transform -rotate-1 blur-sm"
-                viewBox="0 0 300 40"
-                preserveAspectRatio="none"
-                fill="currentColor">
-                <path
-                  d="M5,30 Q150,10 295,30"
-                  stroke="currentColor"
-                  strokeWidth="15"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <svg
-                className="absolute bottom-2 left-0 w-full h-6 text-purple-400 -z-10 transform -rotate-1"
-                viewBox="0 0 300 40"
-                preserveAspectRatio="none"
-                fill="currentColor">
-                <path
-                  d="M5,30 Q150,10 295,30"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </svg>
             </span>
           </h1>
 

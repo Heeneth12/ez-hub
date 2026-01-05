@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Kalam } from "next/font/google";
-import "./globals.css";
-import Header from "@/layouts/components/Header";
-import Footer from "@/layouts/components/Footer";
+import "@/app/globals.css";
+import Header from "@/layouts/marketing/Header";
+import Footer from "@/layouts/marketing/Footer";
 
 //Optimize Fonts
 const geistSans = Geist({

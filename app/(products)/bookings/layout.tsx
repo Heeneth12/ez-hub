@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
+import "@/app/globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/layouts/components/Header";
-import Footer from "@/layouts/components/Footer";
+
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
   subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,9 +29,9 @@ export const metadata: Metadata = {
     "cloud software",
     "HR and payroll",
   ],
-  metadataBase: new URL("https://ez-hub.com"),
+  metadataBase: new URL("https://ez-hub.in/bookings"),
   alternates: {
-    canonical: "https://ez-hub.com",
+    canonical: "https://ez-hub.com/bookings",
   },
   robots: {
     index: true,
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
     title: "EZ Hub — SaaS Products for Billing, POS & Payroll",
     description:
       "Manage your business operations easily with EZ Hub's smart software suite.",
-    url: "https://ez-hub.com",
+    url: "https://ez-hub.com/bookings",
     siteName: "EZ Hub",
     type: "website",
   },
@@ -51,17 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Inter:wght@400;500;600&display=swap');
-          .font-brand { font-family: 'Kalam', cursive; }
-          .font-sans { font-family: 'Inter', sans-serif; }
-        `}</style>
-      </head>
-      <body
-        style={{ backgroundColor: "#EDEDED" }}
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body style={{ backgroundColor: "#EDEDED" }} className="antialiased">
         {children}
       </body>
     </html>
