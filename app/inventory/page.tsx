@@ -3,7 +3,6 @@ import FeaturesSection from "@/layouts/inventory/FeaturesSection";
 import BentoFeatures from "../../layouts/inventory/BentoFeatures";
 import PricingSection from "@/layouts/inventory/PricingSection";
 import CTASection from "@/layouts/inventory/CTASection";
-import { Head } from "next/document";
 import Header from "@/layouts/components/Header";
 import Footer from "@/layouts/components/Footer";
 
@@ -17,7 +16,6 @@ export default function Inventory() {
         <BentoFeatures />
         <PricingSection />
         <CTASection />
-        {/* <AnimatedBeamMultipleOutputDemo/> */}
       </main>
       <Footer />
     </>
