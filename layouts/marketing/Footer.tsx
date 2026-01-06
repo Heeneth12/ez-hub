@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "@/assets/images/new.png";
 import Image from "next/image";
 import { Github, Twitter, Linkedin, Facebook, Send, Globe } from "lucide-react";
@@ -8,22 +7,17 @@ export default function Footer() {
     product: [
       { name: "Features", href: "#" },
       { name: "Pricing", href: "#" },
-      { name: "Integrations", href: "#" },
       { name: "Enterprise", href: "#" },
-      { name: "Changelog", href: "#" },
     ],
     company: [
       { name: "About Us", href: "#" },
-      { name: "Careers", href: "#" },
       { name: "Blog", href: "#" },
       { name: "Contact", href: "#" },
-      { name: "Partners", href: "#" },
     ],
     resources: [
       { name: "Community", href: "#" },
       { name: "Help Center", href: "#" },
       { name: "API Docs", href: "#" },
-      { name: "Status", href: "#" },
     ],
     legal: [
       { name: "Privacy Policy", href: "#" },
@@ -33,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#050505] pt-12 pb-10 border-t border-white/10 font-sans text-white overflow-hidden">
+    <footer className="relative bg-[#050505] pt-12 pb-6 border-t border-white/10 font-sans text-white overflow-hidden">
       {/* Static Background Glow (No Motion) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-white-500/50 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-125 h-125 bg-white-900/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
@@ -50,9 +44,8 @@ export default function Footer() {
             </div>
             <p className="text-gray-400 leading-relaxed mb-8 max-w-xs text-sm">
               Empowering businesses with a unified platform. Simple, efficient,
-              and designed for the modern era.
+              and designed for this era.
             </p>
-
             {/* Newsletter Input */}
             <div className="max-w-xs">
               <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 block">
@@ -76,7 +69,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">
               Product
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {links.product.map((link) => (
                 <li key={link.name}>
                   <a
@@ -93,7 +86,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">
               Company
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {links.company.map((link) => (
                 <li key={link.name}>
                   <a
@@ -110,7 +103,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">
               Resources
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {links.resources.map((link) => (
                 <li key={link.name}>
                   <a
@@ -127,7 +120,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-6">
               Legal
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {links.legal.map((link) => (
                 <li key={link.name}>
                   <a
@@ -142,9 +135,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-gray-500 text-sm">
-            © 2024 Odoo Bits Inc. All rights reserved.
+            © 2024 ez-hub. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">
