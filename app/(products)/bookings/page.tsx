@@ -1,4 +1,6 @@
 "use client";
+import BookingHero from "@/layouts/products/bookings/HeroSection";
+import Header from "@layouts/products/bookings/Header";
 import {
   Calendar,
   BarChart3,
@@ -12,14 +14,6 @@ import {
   Plus,
 } from "lucide-react";
 import { useState } from "react";
-import Header from "@/layouts/products/bookings/Header";
-
-const Avatar = ({ color }: { color: string }) => (
-  <div
-    className={`w-8 h-8 rounded-full border-2 border-white ${color} flex items-center justify-center text-[10px] text-white font-bold`}>
-    U
-  </div>
-);
 
 export default function BookingHeroWithOrangeTheme() {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -98,9 +92,8 @@ export default function BookingHeroWithOrangeTheme() {
       <div className="bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-600">
         {/* --- HERO SECTION --- */}
         <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 lg:pt-20 lg:pb-32">
-          <BookingHeroWithOrangeTheme />
-
           {/* --- TRUSTED BY SECTION --- */}
+          <BookingHero />
           <div className="mt-24 pt-10 border-t border-slate-100 text-center">
             <p className="text-slate-400 text-sm font-medium mb-8">
               We are trusted by 200+ companies
