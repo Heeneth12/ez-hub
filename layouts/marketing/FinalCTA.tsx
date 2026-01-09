@@ -42,7 +42,7 @@ export default function FinalCTA() {
             <div
               key={i}
               className={`
-                group flex flex-col items-start p-8 rounded-3xl bg-white border border-gray-100 
+                group flex flex-col items-start p-8 rounded-2xl bg-white border border-gray-100 
                 transition-all duration-300 ease-out 
                 hover:-translate-y-1 hover:shadow-xl ${v.border} ${v.shadow}
               `}>
