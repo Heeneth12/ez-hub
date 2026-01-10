@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import ez_inventory from "@/assets/images/ez_inv.png";
+import ez_bookings from "@/assets/images/ez_bookings.png";
 
 const features = [
   {
@@ -24,10 +25,10 @@ const features = [
     tabLabel: "Bookings",
     title: "Appointment & Scheduling System",
     description:
-      "Manage appointments, staff availability, and customer bookings seamlessly. Reduce no-shows with reminders and streamline daily operations.",
+       "A flexible booking and appointment system to manage customer appointments, staff schedules, and service-based billing—ideal for hospitals, clinics, salons, and service businesses, with reminders and smooth daily operations.",
     icon: Users,
     color: "bg-green-50 text-green-600",
-    image: null,
+    image: ez_bookings,
     imageColor: "bg-green-100",
     route: "/bookings",
   },
