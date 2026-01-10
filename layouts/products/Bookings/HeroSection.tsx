@@ -3,16 +3,15 @@ import {
   ArrowRight,
   Calendar,
   Clock,
+  CheckCircle2,
   MoreHorizontal,
+  Star,
 } from "lucide-react";
-import { useState } from "react";
 
-// Simple Avatar Component used in the design
-const Avatar = ({ color }: { color: string }) => (
-  <div
-    className={`w-8 h-8 rounded-full border-2 border-white ${color} flex items-center justify-center text-[10px] text-white font-bold`}
-  >
-    U
+// Simple Avatar Component
+const Avatar = ({ src, alt, fallback }: { src?: string; alt?: string; fallback: string }) => (
+  <div className="relative w-10 h-10 rounded-full border-[3px] border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500 shadow-sm overflow-hidden">
+    {fallback}
   </div>
 );
 
@@ -22,183 +21,186 @@ export default function BookingHero() {
   };
 
   return (
-    <div className="bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-600 overflow-hidden">
-      <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 lg:pt-20 lg:pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div className="bg-white font-sans text-slate-900 overflow-hidden relative">
+      {/* Background Decor - Extremely subtle to not distract */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-orange-50/50 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px]" />
+      </div>
+
+      <main className="max-w-7xl mx-auto px-6 pt-32 pb-24 lg:pt-40 lg:pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          {/* LEFT: Text Content */}
-          <div className="space-y-8 animate-fade-in-up">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-semibold cursor-pointer hover:bg-orange-100 transition-colors">
-              <span className="px-1.5 py-0.5 rounded-md bg-white border border-orange-200 text-[10px] uppercase tracking-wider">
-                New
+          {/* --- LEFT: Text Content --- */}
+          <div className="space-y-10 animate-fade-in-up max-w-2xl">
+            
+            {/* Badge - Toned down for a cleaner look */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-100 text-slate-600 text-xs font-medium transition-colors hover:bg-slate-100 cursor-default">
+              <span className="flex h-2 w-2 relative">
+                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                 <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
               </span>
-              <span>Advanced Calendar Sync</span>
-              <ArrowRight size={12} />
+              <span>v2.0 Now Live: Advanced Calendar Sync</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-900">
               Simplify Your <br />
-              <span className="text-slate-900">Booking Process</span>
+              {/* Gradient text for a premium feel, not just flat orange */}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-600">
+                Booking Process
+              </span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-lg text-slate-500 max-w-lg leading-relaxed">
-              Stay on top of appointments, client reminders, and team scheduling
-              with real-time insights and automated tools.
+            <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-lg">
+              Stop playing email tag. Automate your appointments, reminders, and 
+              team scheduling with a tool designed to get out of your way.
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
               <button
                 onClick={handleStart}
-                className="h-12 px-8 rounded-xl bg-orange-600 text-white font-semibold hover:bg-orange-700 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-orange-200 flex items-center gap-2"
+                className="h-14 px-8 rounded-2xl bg-orange-600 text-white font-semibold text-base hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                Get Started
-                <ArrowRight size={18} className="opacity-80" />
+                Get Started Free
+                <ArrowRight size={18} />
               </button>
 
-              <button className="h-12 px-8 rounded-xl bg-white border border-slate-200 text-slate-700 font-semibold hover:border-slate-300 hover:bg-slate-50 transition-all duration-300">
-                Learn More
+              <button className="h-14 px-8 rounded-2xl bg-white border border-slate-200 text-slate-600 font-semibold text-base hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-all duration-300 w-full sm:w-auto">
+                View Demo
               </button>
             </div>
 
-            {/* Reviews / Social Proof */}
-            <div className="flex items-center gap-4 pt-4">
-              <div className="flex -space-x-3">
-                <Avatar color="bg-blue-500" />
-                <Avatar color="bg-green-500" />
-                <Avatar color="bg-purple-500" />
-                <Avatar color="bg-orange-500" />
+            {/* Social Proof - refined alignment */}
+            <div className="pt-6 flex items-center gap-6 border-t border-slate-100 mt-4">
+              <div className="flex -space-x-4">
+                <Avatar fallback="JD" />
+                <Avatar fallback="AS" />
+                <Avatar fallback="MR" />
+                <Avatar fallback="KP" />
+                 <div className="relative w-10 h-10 rounded-full border-[3px] border-white bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-600 shadow-sm">
+                  +2k
+                </div>
               </div>
-              <div className="text-sm font-medium text-slate-600">
-                <span className="font-bold text-slate-900">4.9</span>
-                <span className="text-orange-500 mx-1">★</span>
-                (10k+ reviews)
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1 text-orange-500">
+                  <Star size={14} fill="currentColor" />
+                  <Star size={14} fill="currentColor" />
+                  <Star size={14} fill="currentColor" />
+                  <Star size={14} fill="currentColor" />
+                  <Star size={14} fill="currentColor" />
+                </div>
+                <span className="text-sm font-medium text-slate-500">
+                  Trusted by <span className="text-slate-900 font-bold">10,000+</span> pros
+                </span>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: Floating UI Composition */}
-          <div className="relative isolate hidden md:block">
-            {/* Decor Circles (Blur) */}
-            <div className="absolute top-0 right-0 w-72 h-72 bg-orange-200/40 rounded-full blur-3xl -z-10" />
-            <div className="absolute bottom-0 left-10 w-72 h-72 bg-blue-200/40 rounded-full blur-3xl -z-10" />
-
-            {/* Main Card: Appointment List */}
-            <div className="relative z-10 bg-white rounded-2xl shadow-2xl shadow-slate-200/60 border border-slate-100 p-6 max-w-md ml-auto transform transition-transform hover:scale-[1.01] duration-500">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="font-bold text-lg text-slate-800">
-                  Appointments
-                </h3>
-                <span className="text-xs font-medium text-slate-400 cursor-pointer hover:text-orange-600">
-                  View All
-                </span>
+          {/* --- RIGHT: UI Composition --- */}
+          <div className="relative hidden md:block select-none pointer-events-none lg:translate-x-8">
+            {/* Main App Window Simulation */}
+            <div className="relative z-10 bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 p-8 w-full max-w-[480px] ml-auto rotate-[-2deg] hover:rotate-0 transition-transform duration-700 ease-out">
+              
+              {/* Fake Window Header */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex flex-col">
+                    <h3 className="font-bold text-xl text-slate-800">
+                    Appointments
+                    </h3>
+                    <p className="text-xs text-slate-400">Today, 24 Jan</p>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center">
+                    <Calendar size={18} className="text-slate-400" />
+                </div>
               </div>
 
-              {/* Header Row */}
-              <div className="grid grid-cols-12 text-xs font-semibold text-slate-400 mb-4 px-2">
-                <div className="col-span-5">Client Name</div>
-                <div className="col-span-3 text-center">Time</div>
-                <div className="col-span-3 text-center">Status</div>
-                <div className="col-span-1"></div>
+              {/* List Header */}
+              <div className="flex justify-between text-[11px] uppercase tracking-wider font-semibold text-slate-400 mb-4 px-3">
+                <span>Client</span>
+                <span>Status</span>
               </div>
 
-              {/* Row 1 */}
-              <div className="grid grid-cols-12 items-center text-sm py-3 px-2 hover:bg-slate-50 rounded-lg transition-colors group cursor-pointer">
-                <div className="col-span-5 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">
-                    RJ
+              {/* List Items - Cleaner Design */}
+              <div className="space-y-3">
+                {/* Item 1 */}
+                <div className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-orange-100 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+                      RJ
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 text-sm">Rohan J.</h4>
+                      <p className="text-xs text-slate-400">10:00 AM - 10:30 AM</p>
+                    </div>
                   </div>
-                  <span className="font-semibold text-slate-700">Rohan J.</span>
-                </div>
-                <div className="col-span-3 text-center text-slate-500">
-                  10:00 AM
-                </div>
-                <div className="col-span-3 text-center">
-                  <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-[10px] font-bold">
+                   <span className="px-3 py-1 rounded-full bg-green-50 text-green-700 text-[10px] font-bold border border-green-100">
                     Confirmed
                   </span>
                 </div>
-                <div className="col-span-1 text-slate-300 group-hover:text-slate-500">
-                  <MoreHorizontal size={16} />
-                </div>
-              </div>
 
-              {/* Row 2 */}
-              <div className="grid grid-cols-12 items-center text-sm py-3 px-2 hover:bg-slate-50 rounded-lg transition-colors group cursor-pointer">
-                <div className="col-span-5 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs">
-                    SK
+                {/* Item 2 */}
+                <div className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-orange-100 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-sm">
+                      SK
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 text-sm">Sarah K.</h4>
+                      <p className="text-xs text-slate-400">11:30 AM - 12:30 PM</p>
+                    </div>
                   </div>
-                  <span className="font-semibold text-slate-700">Sarah K.</span>
-                </div>
-                <div className="col-span-3 text-center text-slate-500">
-                  11:30 AM
-                </div>
-                <div className="col-span-3 text-center">
-                  <span className="px-2 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold">
+                  <span className="px-3 py-1 rounded-full bg-orange-50 text-orange-700 text-[10px] font-bold border border-orange-100">
                     Pending
                   </span>
                 </div>
-                <div className="col-span-1 text-slate-300 group-hover:text-slate-500">
-                  <MoreHorizontal size={16} />
-                </div>
-              </div>
 
-              {/* Row 3 */}
-              <div className="grid grid-cols-12 items-center text-sm py-3 px-2 hover:bg-slate-50 rounded-lg transition-colors group cursor-pointer">
-                <div className="col-span-5 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xs">
-                    MP
+                {/* Item 3 */}
+                <div className="flex items-center justify-between p-4 bg-slate-50 border border-slate-100/50 rounded-2xl opacity-60">
+                   <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-sm">
+                      MP
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 text-sm">Mike P.</h4>
+                      <p className="text-xs text-slate-400">02:00 PM - 02:45 PM</p>
+                    </div>
                   </div>
-                  <span className="font-semibold text-slate-700">Mike P.</span>
-                </div>
-                <div className="col-span-3 text-center text-slate-500">
-                  02:00 PM
-                </div>
-                <div className="col-span-3 text-center">
-                  <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-[10px] font-bold">
-                    Confirmed
-                  </span>
-                </div>
-                <div className="col-span-1 text-slate-300 group-hover:text-slate-500">
-                  <MoreHorizontal size={16} />
+                  <MoreHorizontal className="text-slate-300" size={16}/>
                 </div>
               </div>
             </div>
 
-            {/* Floating Pop-up Card */}
-            <div className="absolute top-[60%] -left-6 z-20 bg-white p-5 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 w-64 animate-bounce-slow">
-              <div className="flex items-start justify-between mb-3">
+            {/* Floating "New Booking" Card - Glassmorphism */}
+            <div className="absolute top-[50%] -left-12 lg:-left-4 z-20 backdrop-blur-xl bg-white/90 p-5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border border-white/50 w-72 animate-bounce-slow">
+              <div className="flex items-start justify-between mb-4">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                  <span className="px-2 py-0.5 rounded bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide">
                     New Request
                   </span>
-                  <h4 className="font-bold text-slate-800 text-sm mt-1">
+                  <h4 className="font-bold text-slate-900 text-base mt-2">
                     Consultation Call
                   </h4>
                 </div>
-                <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
-              </div>
-
-              <div className="bg-slate-50 rounded-lg p-3 mb-3 border border-slate-100">
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar size={12} className="text-slate-400" />
-                  <span className="text-xs text-slate-600 font-medium">
-                    Tomorrow, 4:00 PM
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock size={12} className="text-slate-400" />
-                  <span className="text-xs text-slate-600 font-medium">
-                    30 Minutes
-                  </span>
+                <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center">
+                    <span className="text-lg">👋</span>
                 </div>
               </div>
 
-              <button className="w-full py-2 rounded-lg bg-orange-600 text-white text-xs font-bold hover:bg-orange-700 transition-colors">
+              <div className="flex gap-3 mb-4">
+                 <div className="flex-1 bg-slate-50 rounded-xl p-2.5 flex flex-col items-center justify-center gap-1 border border-slate-100">
+                    <Calendar size={14} className="text-slate-400" />
+                    <span className="text-xs font-bold text-slate-700">Tomorrow</span>
+                 </div>
+                 <div className="flex-1 bg-slate-50 rounded-xl p-2.5 flex flex-col items-center justify-center gap-1 border border-slate-100">
+                    <Clock size={14} className="text-slate-400" />
+                    <span className="text-xs font-bold text-slate-700">4:00 PM</span>
+                 </div>
+              </div>
+
+              <button className="w-full py-3 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-slate-200">
                 Accept Booking
               </button>
             </div>
