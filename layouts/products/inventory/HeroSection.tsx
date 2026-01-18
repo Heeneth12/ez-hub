@@ -7,10 +7,14 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export default function HeroSection() {
-  const handleOpenInventoryApp = () => {
-    window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+  const handleOpenInventoryApp = (type: string) => {
+    if (type === "APP") {
+      window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+    }
+    if (type === "BOOK_DEMO") {
+      window.open("https://app.ez-hub.in/login?book_demo=true", "_blank");
+    }
   };
-
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start pt-32 pb-20 bg-[#050505] overflow-hidden font-sans text-white selection:bg-purple-500/30">
       {/* 1. Grid Pattern */}
@@ -59,21 +63,21 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
           <button
-            onClick={handleOpenInventoryApp}
+            onClick={() => handleOpenInventoryApp("APP")}
             className="h-12 px-8 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2">
             Start Free Trial
             <ArrowRight size={16} />
           </button>
-          <Link href="/contact">
-            <button className="h-12 px-8 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm hover:bg-white/10 transition-all duration-300 backdrop-blur-md">
-              Book Demo
-            </button>
-          </Link>
+          <button
+            onClick={() => handleOpenInventoryApp("BOOK_DEMO")}
+            className="h-12 px-8 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm hover:bg-white/10 transition-all duration-300 backdrop-blur-md">
+            Book Demo
+          </button>
         </div>
 
         {/* --- 3D DASHBOARD MOCKUP --- */}
         <div className="relative w-full max-w-5xl mx-auto perspective-1000 group">
-          <div className="absolute -inset-px bg-linear-to-r from-purple-500/40 via-indigo-500/40 to-blue-500/40 rounded-xl blur-sm opacity-70 group-hover:opacity-100 group-hover:blur-md transition-all duration-500 z-0"></div>
+          <div className="absolute -inset-px bg-linear-to-r rounded-xl blur-sm opacity-70 group-hover:opacity-100 group-hover:blur-md transition-all duration-500 z-0"></div>
 
           <div
             className="relative z-10 m-px rounded-xl bg-[#0a0a0a]/90 backdrop-blur-xl shadow-2xl overflow-hidden transform transition-transform duration-700 hover:scale-[1.01] hover:rotate-x-2"
