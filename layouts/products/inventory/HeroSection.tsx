@@ -8,11 +8,11 @@ import Link from "next/link";
 
 export default function HeroSection() {
   const handleOpenInventoryApp = (type: string) => {
-    if (type === "APP") {
+    if (type === "demo") {
       window.open("https://app.ez-hub.in/login?demo=true", "_blank");
     }
-    if (type === "BOOK_DEMO") {
-      window.open("https://app.ez-hub.in/login?book_demo=true", "_blank");
+    if (type === "booking") {
+      window.open("https://app.ez-hub.in/login?booking=true", "_blank");
     }
   };
   return (
@@ -63,13 +63,13 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
           <button
-            onClick={() => handleOpenInventoryApp("APP")}
+            onClick={() => handleOpenInventoryApp("demo")}
             className="h-12 px-8 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2">
             Start Free Trial
             <ArrowRight size={16} />
           </button>
           <button
-            onClick={() => handleOpenInventoryApp("BOOK_DEMO")}
+            onClick={() => handleOpenInventoryApp("booking")}
             className="h-12 px-8 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm hover:bg-white/10 transition-all duration-300 backdrop-blur-md">
             Book Demo
           </button>
