@@ -1,10 +1,16 @@
+"use client";
 import HeroSection from "@/layouts/products/inventory/HeroSection";
 import PricingSection from "@/layouts/products/inventory/PricingSection";
 import BentoFeatures from "@/layouts/products/inventory/BentoFeatures";
 import CTASection from "@/layouts/products/inventory/CTASection";
 import FAQSection from "@/layouts/products/inventory/FAQSection";
+import { useEffect } from "react";
 
 export default function Inventory() {
+  useEffect(() => {
+    fetch("https://ezauth-c4w0.onrender.com/actuator/health");
+    fetch("https://ez-inventory.onrender.com/actuator/health");
+  }, []);
   return (
     <>
       <article>

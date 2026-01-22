@@ -1,10 +1,15 @@
+"use client";
 import HeroSection from "@/layouts/marketing/HeroSection";
 import FeatureSections from "@/layouts/marketing/FeatureSections";
 import FinalCTA from "@/layouts/marketing/FinalCTA";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    fetch("https://ezauth-c4w0.onrender.com/actuator/health");
+    fetch("https://ez-inventory.onrender.com/actuator/health");
+  }, []);
   return (
-    
     <article>
       <section id="hero" aria-label="Introduction">
         <HeroSection />
