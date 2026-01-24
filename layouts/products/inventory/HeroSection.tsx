@@ -53,7 +53,7 @@ export default function HeroSection() {
 
   return (
     <div className="relative bg-white w-full min-h-screen font-sans text-[#0f0f0f] overflow-x-hidden selection:bg-orange-100">
-      <div className="absolute inset-0 z-0 h-full w-full bg-[radial-gradient(#d4d4d8_1.1px,transparent_1.1px)] [background-size:20px_20px]"></div>
+      <div className="absolute inset-0 z-0 h-full w-full bg-[radial-gradient(#d4d4d8_1.1px,transparent_1.1px)] bg-size-[20px_20px]"></div>
       <section className="pt-32 pb-0 flex flex-col items-center text-center relative z-10">
         <div className="max-w-7xl mx-auto px-4 my-8">
           <h1 className="text-[3rem] md:text-[5rem] lg:text-[6rem] leading-[1] font-black tracking-[-0.03em] text-[#0F0F0F]">
