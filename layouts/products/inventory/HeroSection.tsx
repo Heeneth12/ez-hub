@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
-import { ArrowRight } from "lucide-react";
-import Inv from "@/assets/images/Inv-bg.png";
+import { motion } from "framer-motion";
+import inv from "@/assets/images/Inv-bg.png";
 import Image from "next/image";
-import { redirect } from "next/navigation";
-import Link from "next/link";
+
+import { ArrowRight, CheckCircle2, Play } from "lucide-react";
 
 export default function HeroSection() {
   const handleOpenInventoryApp = (type: string) => {
@@ -15,79 +14,83 @@ export default function HeroSection() {
       window.open("https://app.ez-hub.in/login?booking=true", "_blank");
     }
   };
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-start pt-32 pb-20 bg-[#050505] overflow-hidden font-sans text-white selection:bg-purple-500/30">
-      {/* 1. Grid Pattern */}
-      <div
-        className="absolute inset-0 z-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}></div>
-
-      {/* 2. Top Spotlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-150 bg-linear-to-b from-purple-900/20 via-blue-900/10 to-transparent blur-[120px] pointer-events-none z-0" />
-
-      {/* 3. Gradient Orb behind dashboard */}
-      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-200 h-100 bg-indigo-600/20 blur-[100px] rounded-full pointer-events-none z-0" />
-
-      {/* --- CONTENT LAYER --- */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 hover:bg-white/10 transition-colors cursor-default">
-          <span className="flex h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
-          <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">
-            Inventory OS 2.0
-          </span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
-          {/* Fixed bg-linear-to-b -> bg-gradient-to-b */}
-          <span className="block text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/50">
-            Modern inventory software
-          </span>
-          {/* Fixed bg-linear-to-br -> bg-gradient-to-br */}
-          <span className="block text-transparent bg-clip-text bg-linear-to-br from-indigo-300 via-white to-purple-300">
+    <section>
+      <main className="relative pt-32 md:pt-48 pb-16 md:pb-24 px-4 md:px-6 max-w-[1200px] mx-auto flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
+        >
+          {/* Explicitly set to text-gray-900 for bold, sharp visibility */}
+          <h1 className="text-[40px] sm:text-5xl md:text-[84px] font-semibold leading-[1.05] tracking-[-0.04em] mb-4 text-gray-900">
+            Modern inventory software{" "}
+            <br className="hidden md:block" />
             for Indian businesses
-          </span>
-        </h1>
+          </h1>
 
-        {/* Subtext */}
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-10 leading-relaxed">
-          Real-time tracking, AI-powered forecasting, and automated reordering.
-          The inventory system designed for modern commerce.
-        </p>
+          <h4 className="text-base sm:text-lg md:text-xl font-medium tracking-tight text-gray-500 mt-6 leading-relaxed max-w-2xl mx-auto">
+            Real-time tracking, AI-powered forecasting, and automated reordering. <br className="hidden md:block" />
+            Built to scale your operations effortlessly.
+          </h4>
+        </motion.div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="flex flex-col sm:flex-row gap-3 md:gap-5 mt-10 md:mt-16 w-full sm:w-auto"
+        >
+          {/* Primary Button: Added Flex layout, gap, and the animated ArrowRight */}
           <button
             onClick={() => handleOpenInventoryApp("demo")}
-            className="h-12 px-8 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2">
-            Start Free Trial
-            <ArrowRight size={16} />
+            className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-[#FF451A] text-white px-6 md:px-8 py-4 rounded-full text-base font-bold hover:shadow-[0_15px_30px_rgba(255,69,26,0.25)] hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Start for free
+            <ArrowRight size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-1.5" />
           </button>
+
+          {/* Secondary Button: Added Flex layout, gap, and the animated Play icon */}
           <button
             onClick={() => handleOpenInventoryApp("booking")}
-            className="h-12 px-8 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm hover:bg-white/10 transition-all duration-300 backdrop-blur-md">
-            Book Demo
+            className="group w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#F5F5F7] text-black px-6 md:px-8 py-4 rounded-full text-base font-bold hover:bg-[#EDEDF0] transition-all duration-300"
+          >
+            <Play size={18} fill="currentColor" strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
+            Book a demo
           </button>
-        </div>
+        </motion.div>
 
-        {/* --- 3D DASHBOARD MOCKUP --- */}
-        <div className="relative w-full max-w-5xl mx-auto perspective-1000 group">
-          <div className="absolute -inset-px bg-linear-to-r rounded-xl blur-sm opacity-70 group-hover:opacity-100 group-hover:blur-md transition-all duration-500 z-0"></div>
+        <motion.div
+          className="mt-8 flex flex-wrap justify-center gap-6 text-gray-400"
+        >
+          {['GST Ready', 'Cloud Sync', '24/7 Support'].map((feature) => (
+            <div key={feature} className="flex items-center gap-1.5 text-xs font-medium">
+              <CheckCircle2 size={14} className="text-green-500" />
+              {feature}
+            </div>
+          ))}
+        </motion.div>
 
-          <div
-            className="relative z-10 m-px rounded-xl bg-[#0a0a0a]/90 backdrop-blur-xl shadow-2xl overflow-hidden transform transition-transform duration-700 hover:scale-[1.01] hover:rotate-x-2"
-            style={{ transform: "rotateX(2deg)" }}>
-            <Image src={Inv} alt="EZ Hub Logo" className="rounded-xl" />
-            <div className="absolute inset-0 bg-linear-to-tr from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-20 w-full max-w-5xl rounded-2xl border border-gray-200 bg-gray-50/50 p-1 shadow-sm overflow-hidden"
+        >
+          <div className="rounded-xl border border-gray-200 bg-white aspect-[16/9] flex items-center justify-center text-gray-300 font-medium">
+            {/* Replace this with an actual screenshot of your app */}
+            <Image
+              src={inv}
+              alt="EZ Hub Logo"
+              className="h-full w-auto rounded-2xl object-contain"
+              priority
+            />
           </div>
-          <div className="absolute -bottom-10 left-4 right-4 h-10 bg-indigo-500/30 blur-[60px] rounded-[100%] z-[-1]" />
-        </div>
-      </div>
+        </motion.div>
+
+      </main>
     </section>
   );
 }
