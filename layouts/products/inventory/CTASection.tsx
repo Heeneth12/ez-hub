@@ -1,90 +1,57 @@
 "use client";
-import { ArrowRight, Sparkles } from "lucide-react";
-import Link from "next/link";
-
-export const theme = {
-  colors: {
-    bg: {
-      main: "bg-[#050505]", // The deep dark background
-      glow: "bg-indigo-950/20", // The ambient light orb
-      glass: "bg-white/[0.02]", // For badges/cards
-      glassHover: "hover:bg-white/[0.02]",
-    },
-    text: {
-      heading: "text-white",
-      body: "text-zinc-500",
-      subtle: "text-zinc-400", // For icons/badges
-      faint: "text-zinc-600", // For footers
-      inverse: "text-black", // For primary buttons
-    },
-    border: {
-      subtle: "border-white/5", // Section dividers
-      light: "border-white/10", // Buttons/Cards
-      hover: "hover:border-white/20",
-    },
-  },
-  gradients: {
-    metallicText:
-      "text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-600",
-    gridPattern:
-      "linear-gradient(#444 1px, transparent 1px), linear-gradient(90deg, #444 1px, transparent 1px)",
-  },
-  effects: {
-    buttonGlow: "shadow-[0_0_20px_rgba(255,255,255,0.15)]",
-    backdrop: "backdrop-blur-md",
-  },
-  layout: {
-    sectionPad: "py-12 md:py-18",
-    maxWidth: "max-w-4xl",
-  },
-};
+import { ArrowRight, Play } from "lucide-react";
 
 export default function CTASection() {
-  const handleOpenInventoryApp = () => {
-    window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+  const handleOpenInventoryApp = (type: string) => {
+    if (type === "demo") {
+      window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+    }
+    if (type === "booking") {
+      window.open("https://app.ez-hub.in/login?booking=true", "_blank");
+    }
   };
 
   return (
-    <section
-      className={`relative ${theme.layout.sectionPad} ${theme.colors.bg.main} overflow-hidden flex flex-col items-center justify-center text-center px-6 ${theme.colors.border.subtle}`}>
-      <div
-        className="absolute inset-0 z-0 opacity-[0.05]"
-        style={{
-          backgroundImage: theme.gradients.gridPattern,
-          backgroundSize: "60px 60px",
-        }}></div>
-      <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-200 h-125 ${theme.colors.bg.glow} blur-[150px] rounded-full pointer-events-none z-0`}
-      />
-      <div className="relative z-10 max-w-4xl mx-auto">
-        <h2
-          className={`text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tighter ${theme.colors.text.heading} mb-8 leading-[1.05]`}>
-          Ready to revolutionize <br />
-          <span className={theme.gradients.metallicText}>your inventory?</span>
-        </h2>
-        <p
-          className={`text-sm ${theme.colors.text.body} font-light mb-10 max-w-xl mx-auto leading-relaxed`}>
-          Join thousands of Indian businesses streamlining their operations.
-        </p>
+    <section className="py-12 md:py-18 px-4 md:px-4 max-w-[1400px] mx-auto bg-white">
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <button
-            onClick={handleOpenInventoryApp}
-            className={`group h-12 px-8 rounded-full bg-white ${theme.colors.text.inverse} font-medium text-sm hover:bg-zinc-200 transition-all duration-300 ${theme.effects.buttonGlow} flex items-center justify-center gap-2 w-full sm:w-auto`}>
-            Get Started Now
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </button>
+      <div className="bg-gray-50 border border-gray-100 rounded-[2rem] md:rounded-[3rem] py-16 md:py-24 px-6 md:px-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
 
-          <Link href="/contact" className="w-full sm:w-auto">
+        {/* Subtle top glow to give the card depth */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-gradient-to-b from-gray-200/40 to-transparent blur-[80px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-3xl flex flex-col items-center">
+          {/* Updated copy to match Inventory context */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight mb-4">
+            Ready to scale your operations?
+          </h2>
+          <p className="text-gray-500 text-base md:text-xl mb-10 max-w-xl">
+            Join modern Indian businesses automating their inventory. Start free today, no credit card required.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+
+            {/* Primary Button */}
             <button
-              className={`h-12 px-8 rounded-full bg-transparent border ${theme.colors.border.light} text-zinc-300 font-medium text-sm hover:text-white hover:border-white/20 hover:bg-white/[0.02] transition-all duration-300 w-full sm:w-auto`}>
-              Talk to Sales
+              onClick={() => handleOpenInventoryApp("demo")}
+              type="button"
+              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-gray-900 text-white px-8 md:px-10 py-4 rounded-full text-base font-medium hover:bg-black hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Start for free
+              {/* Arrow moves slightly right on hover using group-hover:translate-x-1.5 */}
+              <ArrowRight size={18} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-1.5" />
             </button>
-          </Link>
+
+            <button
+              onClick={() => handleOpenInventoryApp("booking")}
+              type="button"
+              className="group w-full sm:w-auto flex items-center justify-center gap-2.5 bg-white border border-gray-200 text-gray-900 px-8 md:px-10 py-4 rounded-full text-base font-medium hover:bg-gray-50 hover:border-gray-300 transition-all duration-300"
+            >
+              <Play size={18} fill="currentColor" strokeWidth={1} className="text-gray-900 transition-transform duration-300 group-hover:scale-110" />
+              Book a demo
+            </button>
+
+          </div>
         </div>
-        <p className={`mt-6 text-xs ${theme.colors.text.faint} font-mono`}>
-          No credit card required • Cancel anytime
-        </p>
       </div>
     </section>
   );

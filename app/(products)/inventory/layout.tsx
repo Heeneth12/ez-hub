@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/layouts/marketing/Header";
-import Footer from "@/layouts/marketing/Footer";
+import Header from "@/layouts/products/inventory/Header";
+import Footer from "@/layouts/products/inventory/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,11 +60,9 @@ export default function RootLayout({
           .font-sans { font-family: 'Inter', sans-serif; }
         `}</style>
       </head>
-      <body
-        style={{ backgroundColor: "#EDEDED" }}
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900 flex flex-col min-h-screen`}>
         <Header />
-        <main className="grow bg-[#050505] min-h-screen">{children}</main>
+        <main className="grow bg-white flex flex-col">{children}</main>
         <Footer />
       </body>
     </html>

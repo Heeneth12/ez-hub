@@ -1,199 +1,139 @@
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { 
-  Package, 
-  Warehouse, 
-  ScanBarcode, 
-  Puzzle, 
-  MapPin, 
-  FileBarChart, 
-  ArrowRight,
-  Sparkles
+import {
+  Package,
+  Warehouse,
+  ScanBarcode,
+  Puzzle,
+  MapPin,
+  FileBarChart,
 } from "lucide-react";
-
-// --- THEME CONFIGURATION ---
-const theme = {
-  colors: {
-    bg: {
-      main: "bg-zinc-50",
-      card: "bg-gradient-to-b from-white to-zinc-50",
-      featured: "bg-gradient-to-br from-zinc-900 to-zinc-800",
-      iconBox: "bg-gradient-to-br from-white to-zinc-100",
-      iconBoxFeatured: "bg-zinc-800",
-    },
-    text: {
-      heading: "text-zinc-900",
-      body: "text-zinc-500",
-      inverse: "text-zinc-100", 
-      inverseBody: "text-zinc-400",
-    },
-    border: {
-      light: "border-zinc-200", // Standard border
-      highlight: "border-zinc-300",
-      featured: "border-zinc-700",
-    },
-    effects: {
-      shadow: "shadow-[0_2px_10px_-2px_rgba(0,0,0,0.05)]",
-      shadowHover: "hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)]",
-      innerHighlight: "shadow-[inset_0_1px_0_0_rgba(255,255,255,1)]", // Top edge light
-    }
-  },
-  layout: {
-    maxWidth: "max-w-7xl",
-    sectionPad: "py-24",
-  }
-};
-
-// --- DATA ---
-const features = [
-  {
-    title: "Order Management",
-    description: "Centralize your sales and purchase activities. Track payments and shipments in real-time with automated workflows.",
-    icon: Package,
-    featured: true, 
-    link: "/features/orders"
-  },
-  {
-    title: "Warehouse Control",
-    description: "Manage stock across multiple locations. Track transfers and generate granular warehouse-specific reports.",
-    icon: Warehouse,
-    link: "/features/warehouse"
-  },
-  {
-    title: "Barcode Systems",
-    description: "Connect major scanners to easily add SKUs, serials, and batch numbers to your digital records.",
-    icon: ScanBarcode,
-    link: "/features/barcode"
-  },
-  {
-    title: "Ecosystem Sync",
-    description: "Seamlessly integrate with Shopify, Amazon, CRM tools, and payment gateways like Razorpay.",
-    icon: Puzzle,
-    link: "/features/integrations"
-  },
-  {
-    title: "Precision Tracking",
-    description: "Monitor spare parts, expiration dates, and serial numbers to minimize loss and optimize stock levels.",
-    icon: MapPin,
-    link: "/features/tracking"
-  },
-  {
-    title: "Intelligence & Reports",
-    description: "Deep dive into inventory aging, vendor performance, and valuation with exportable, data-rich reports.",
-    icon: FileBarChart,
-    link: "/features/reports"
-  }
-];
 
 export default function FeaturesSectionSilver() {
   return (
-    <section className={`relative ${theme.colors.bg.main} ${theme.layout.sectionPad} overflow-hidden font-sans selection:bg-zinc-200`}>
-      
-      {/* Background: Subtle Metallic Grain/Grid */}
-      <div className="absolute inset-0 z-0 opacity-[0.4]" 
-        style={{ backgroundImage: "radial-gradient(#d4d4d8 1px, transparent 1px)", backgroundSize: "24px 24px" }} 
-      />
-      
-      {/* Ambient Gradient Blobs (Very Subtle) */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-white to-transparent opacity-80 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-zinc-200/30 blur-[100px] pointer-events-none" />
-
-      <div className={`relative z-10 mx-auto px-6 ${theme.layout.maxWidth}`}>
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 bg-white/50 backdrop-blur-sm mb-6">
-            <Sparkles size={12} className="text-zinc-500" />
-            <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest">Enterprise Grade</span>
-          </div>
-
-          <h2 className={`text-4xl md:text-5xl font-semibold tracking-tighter mb-6 ${theme.colors.text.heading}`}>
-            Built for scale, <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-zinc-800 via-zinc-600 to-zinc-400">
-              designed for clarity.
-            </span>
-          </h2>
-          <p className={`text-lg ${theme.colors.text.body} font-light`}>
-             A unified operating system for your inventory, stripped of complexity and polished for performance.
-          </p>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} />
-          ))}
-        </div>
-
-        {/* Footer Link */}
-        <div className="mt-20 text-center">
-          <a href="/features" className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-all">
-            <span className="border-b border-transparent group-hover:border-zinc-900">View full capabilities</span>
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-          </a>
-        </div>
-
+    <section className="py-16 md:py-32 px-4 md:px-6 max-w-[1200px] mx-auto">
+      <div className="flex flex-col gap-16 md:gap-32">
+        <FeatureCard
+          title="An AI IDE Core"
+          description="exactly.ai's Editor view offers tab autocompletion, natural language code commands, and a configurable, context-aware agent built for brand consistency at every keystroke."
+          visual={<Feature1Visual />}
+        />
+        <FeatureCard
+          title="Higher-level Abstractions"
+          description="A more intuitive task-based approach to monitoring agent activity, presenting you with essential artifacts and verification results to build trust."
+          visual={<Feature2Visual />}
+          reversed
+        />
       </div>
     </section>
   );
 }
 
-// --- SUB-COMPONENT: FEATURE CARD ---
-const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
-  const isFeatured = feature.featured;
+// ─── TYPES ───────────────────────────────────────────────────────────────────
 
-  return (
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  visual: ReactNode;
+  reversed?: boolean;
+}
+
+// ─── FEATURE CARD (reusable) ──────────────────────────────────────────────────
+const FeatureCard: React.FC<FeatureCardProps> = ({ 
+  title, 
+  description, 
+  visual, 
+  reversed = false 
+}) => (
+  <div className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-24 ${reversed ? "lg:flex-row-reverse" : ""}`}>
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
-      className={`group relative flex flex-col p-8 rounded-2xl border transition-all duration-500
-        ${isFeatured 
-          ? `${theme.colors.bg.featured} ${theme.colors.border.featured} shadow-2xl` 
-          : `${theme.colors.bg.card} ${theme.colors.border.light}  hover:border-zinc-300`
-        }
-      `}
+      initial={{ opacity: 0, x: reversed ? 30 : -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="flex-1 space-y-4"
     >
-      {/* Inner Light Highlight (Top Bevel Effect) */}
-      {!isFeatured && <div className={`absolute inset-0 rounded-2xl pointer-events-none `} />}
-
-      {/* Featured Card Subtle Light Effect */}
-      {isFeatured && (
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full pointer-events-none" />
-      )}
-
-      {/* Icon Area */}
-      <div className="mb-8 relative">
-        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border transition-transform duration-500 group-hover:scale-105 shadow-sm
-          ${isFeatured 
-            ? `${theme.colors.bg.iconBoxFeatured} border-zinc-700 text-white shadow-black/20` 
-            : `${theme.colors.bg.iconBox} border-zinc-100 text-zinc-700 group-hover:border-zinc-300 group-hover:text-zinc-900`
-          }
-        `}>
-          <feature.icon size={26} strokeWidth={1.5} />
-        </div>
-      </div>
-
-      {/* Content Area */}
-      <div className="flex-grow relative z-10">
-        <h3 className={`text-lg font-medium mb-3 tracking-tight ${isFeatured ? theme.colors.text.inverse : theme.colors.text.heading}`}>
-          {feature.title}
-        </h3>
-        <p className={`text-sm leading-relaxed ${isFeatured ? theme.colors.text.inverseBody : theme.colors.text.body}`}>
-          {feature.description}
-        </p>
-      </div>
-
-      {/* Action Area (Subtle Arrow) */}
-      <div className={`mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300
-        ${isFeatured ? "text-zinc-400 group-hover:text-white" : "text-zinc-400 group-hover:text-zinc-900"}
-      `}>
-        Learn More
-        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-      </div>
-
+      <h3 className="text-2xl md:text-4xl font-semibold tracking-tight">{title}</h3>
+      <p className="text-[#666666] text-base md:text-lg leading-relaxed max-w-md">{description}</p>
     </motion.div>
-  );
-};
+
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="flex-1 w-full"
+    >
+      {visual}
+    </motion.div>
+  </div>
+);
+
+// FEATURE 1 VISUAL
+const Feature1Visual = () => (
+  <div className="bg-[#F8FAFC] rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 relative flex items-center justify-center min-h-[300px] md:min-h-[400px] overflow-hidden">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gradient-to-tr from-yellow-200 via-green-200 to-cyan-200 blur-[60px] opacity-40 mix-blend-multiply pointer-events-none" />
+    <div className="relative z-10 w-full bg-white/80 backdrop-blur-xl rounded-xl border border-gray-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-3 md:p-4 font-mono text-[10px] md:text-xs overflow-hidden">
+      <div className="flex items-center gap-2 mb-3 border-b border-gray-100 pb-2 text-gray-400 flex-wrap">
+        <span className="text-blue-500">⚛ Implementation plan</span>
+        <span className="text-gray-300 hidden sm:inline">|</span>
+        <span className="text-gray-800 font-medium">LoginButton.tsx</span>
+      </div>
+      <div className="text-gray-500 space-y-1 pl-3 md:pl-4 border-l-2 border-green-400">
+        <p>
+          <span className="text-purple-600">import</span> Link{" "}
+          <span className="text-purple-600">from</span>{" "}
+          <span className="text-green-600">'next/link'</span>;
+        </p>
+        <br />
+        <p>
+          <span className="text-purple-600">export default function</span>{" "}
+          <span className="text-blue-600">LoginButton</span>() {"{"}
+        </p>
+        <p className="pl-4">
+          <span className="text-purple-600">return</span> (
+        </p>
+        <p className="pl-6 md:pl-8 text-blue-500">{"<Link"}</p>
+        <p className="pl-10 md:pl-12">
+          <span className="text-blue-400">href</span>=
+          <span className="text-green-600">"/api/auth/signin"</span>
+        </p>
+        <p className="pl-10 md:pl-12">
+          <span className="text-blue-400">className</span>=
+          <span className="text-green-600">"rounded-md bg-orange-500..."</span>
+        </p>
+        <p className="pl-6 md:pl-8 text-blue-500">{">"}</p>
+        <p className="pl-10 md:pl-12 text-black">Login with Google</p>
+        <p className="pl-6 md:pl-8 text-blue-500">{"</Link>"}</p>
+        <p className="pl-4">)</p>
+        <p>{"}"}</p>
+      </div>
+    </div>
+  </div>
+);
+
+// FEATURE 2 VISUAL 
+const Feature2Visual = () => (
+  <div className="bg-[#F8FAFC] rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 relative flex flex-col gap-4 items-center justify-center min-h-[300px] md:min-h-[400px] overflow-hidden">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-gradient-to-tr from-blue-100 via-cyan-100 to-teal-100 blur-[70px] opacity-50 mix-blend-multiply pointer-events-none" />
+    <div className="relative z-10 w-full max-w-sm bg-white rounded-2xl border border-gray-100/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 md:p-6">
+      <h4 className="font-semibold text-sm mb-2">Setting up Dependencies</h4>
+      <p className="text-xs text-gray-500 mb-3">
+        User approved plan. Starting execution by installing...
+      </p>
+      <div className="flex flex-wrap gap-2 text-[10px] font-mono">
+        <span className="bg-blue-50 text-blue-600 px-2 py-1 rounded">date-fns</span>
+        <span className="bg-blue-50 text-blue-600 px-2 py-1 rounded">lucide-react</span>
+      </div>
+    </div>
+    <div className="relative z-10 w-full max-w-sm bg-white rounded-2xl border border-gray-100/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 md:p-6 opacity-70">
+      <h4 className="font-semibold text-sm mb-2">Implementing Backend</h4>
+      <p className="text-xs text-gray-500">
+        Created{" "}
+        <span className="text-blue-500 bg-blue-50 px-1 rounded">DashboardUI.tsx</span>. Now
+        creating page.tsx to fetch data and render UI.
+      </p>
+    </div>
+  </div>
+);
