@@ -11,10 +11,10 @@ const SOCIAL_LINKS = [
 ];
 
 const FOOTER_COLUMNS = [
-  { heading: "Product", links: ["Style Transfer", "Brand Models", "API Access", "Integrations", "Changelog"] },
-  { heading: "Industries", links: ["Fashion & Retail", "Hospitality", "Architecture", "Publishing", "Agencies"] },
-  { heading: "Resources", links: ["Documentation", "Case Studies", "Blog", "Community", "Status"] },
-  { heading: "Company", links: ["About", "Careers", "Press Kit", "Contact", "Pricing"] },
+  { heading: "Product", links: ["Style Transfer", "API Access", "Integrations"] },
+  { heading: "Industries", links: ["Fashion & Retail", "Hospitality", "Agencies"] },
+  { heading: "Resources", links: ["Documentation", "Blog", "Community"] },
+  { heading: "Company", links: ["About","Contact", "Pricing"] },
 ];
 
 export default function Footer() {
@@ -53,10 +53,6 @@ export default function Footer() {
           {/* Brand col */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <Logo />
-
-            <p className="text-white/35 text-[13.5px] leading-[1.75] max-w-70" style={{ letterSpacing: "0.01em" }}>
-              AI-powered brand consistency at scale. Your style, your rules, your ownership.
-            </p>
 
             {/* Newsletter micro-signup */}
             <div className="mt-1">
