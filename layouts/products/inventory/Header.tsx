@@ -42,7 +42,7 @@ export default function Header() {
                     ))}
 
                     {/* Resources Dropdown Toggle */}
-                    <div className="relative">
+                    {/* <div className="relative">
                         <button
                             onClick={() => setResourcesOpen(!resourcesOpen)}
                             className="flex items-center gap-1 hover:text-black transition-colors"
@@ -56,7 +56,7 @@ export default function Header() {
                                 <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Community</a>
                             </div>
                         )}
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Desktop CTA */}

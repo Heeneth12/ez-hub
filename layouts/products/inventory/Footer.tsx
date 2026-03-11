@@ -28,7 +28,7 @@ export default function Footer() {
     >
       {/* Subtle radial glow top-left */}
       <div
-        className="pointer-events-none absolute top-0 left-0 w-[600px] h-[400px] opacity-20"
+        className="pointer-events-none absolute top-0 left-0 w-150 h-100 opacity-20"
         style={{
           background: "radial-gradient(ellipse at 0% 0%, #FF451A33 0%, transparent 70%)",
         }}
@@ -47,25 +47,25 @@ export default function Footer() {
       <div className="w-full h-px" style={{ background: "linear-gradient(90deg, transparent 0%, #FF451A55 30%, #FF451A 50%, #FF451A55 70%, transparent 100%)" }} />
 
       {/* ── Main content ── */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 pt-8 md:pt-10 pb-12 md:pb-8">
+      <div className="relative z-10 max-w-350 mx-auto px-6 md:px-12 pt-8 md:pt-10 pb-12 md:pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
 
           {/* Brand col */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <Logo />
 
-            <p className="text-white/35 text-[13.5px] leading-[1.75] max-w-[280px]" style={{ letterSpacing: "0.01em" }}>
+            <p className="text-white/35 text-[13.5px] leading-[1.75] max-w-70" style={{ letterSpacing: "0.01em" }}>
               AI-powered brand consistency at scale. Your style, your rules, your ownership.
             </p>
 
             {/* Newsletter micro-signup */}
             <div className="mt-1">
               <p className="text-[10px] uppercase tracking-[0.18em] text-white/25 mb-3 font-medium">Stay updated</p>
-              <div className="flex gap-0 max-w-[280px]">
+              <div className="flex gap-0 max-w-70">
                 <input
                   type="email"
                   placeholder="your@email.com"
-                  className="flex-1 bg-white/[0.04] border border-white/10 text-white/60 text-[12.5px] px-3.5 py-2.5 rounded-l-lg outline-none placeholder:text-white/20 focus:border-white/25 transition-colors"
+                  className="flex-1 bg-white/4 border border-white/10 text-white/60 text-[12.5px] px-3.5 py-2.5 rounded-l-lg outline-none placeholder:text-white/20 focus:border-white/25 transition-colors"
                   style={{ fontFamily: "inherit" }}
                 />
                 <button

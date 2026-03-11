@@ -30,7 +30,6 @@ export default function FeaturesSectionSilver() {
   );
 }
 
-// ─── TYPES ───────────────────────────────────────────────────────────────────
 
 interface FeatureCardProps {
   title: string;
