@@ -28,7 +28,7 @@ export default function Header() {
 
     return (
         <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-            <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4 md:px-8 h-16">
+            <div className="max-w-350 mx-auto flex items-center justify-between px-4 md:px-8 h-16">
 
                 {/* Logo */}
                 <Logo />
@@ -51,7 +51,7 @@ export default function Header() {
                         </button>
 
                         {resourcesOpen && (
-                            <div className="absolute top-full left-0 mt-2 w-40 bg-white border border-gray-100 shadow-lg rounded-xl py-2 py-2 animate-in fade-in zoom-in duration-200">
+                            <div className="absolute top-full left-0 mt-2 w-40 bg-white border border-gray-100 shadow-lg rounded-xl py-2 animate-in fade-in zoom-in duration-200">
                                 <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Help Center</a>
                                 <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Community</a>
                             </div>
@@ -87,7 +87,7 @@ export default function Header() {
                         type="button"
                         aria-label="Toggle menu"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-gray-50 transition"
+                        className="w-9 h-9 flex flex-col items-center justify-center gap-1.25 rounded-lg hover:bg-gray-50 transition"
                     >
                         <MenuIcon className="text-gray-500"/>
                     </button>

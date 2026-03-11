@@ -1,216 +1,307 @@
 "use client";
+import React from "react";
 import {
-  Cpu,
-  Lock,
-  Zap,
-  Settings2,
+  TrendingUp,
+  CreditCard,
+  ShieldCheck,
+  CheckCircle2,
+  Users,
+  Server,
+  ShoppingCart,
   ArrowUpRight,
-  Smartphone,
-  FileText,
-  Calculator,
-  ScanFace,
+  Box,
 } from "lucide-react";
 
-const theme = {
-  colors: {
-    bg: {
-      main: "bg-[#050505]",
-      card: "bg-[#0A0A0A]",
-      glow: "bg-indigo-950/20",
-      glass: "bg-white/[0.02]",
-      glassHover: "hover:bg-white/[0.04]",
-    },
-    text: {
-      heading: "text-white",
-      body: "text-zinc-500",
-      subtle: "text-zinc-400",
-      highlight: "text-zinc-200",
-      accent: "text-zinc-300",
-      inverse: "text-black",
-    },
-    border: {
-      subtle: "border-white/5",
-      light: "border-white/10",
-      highlight: "border-white/20",
-    },
-  },
-  gradients: {
-    metallicText:
-      "text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-600",
-    gridPattern:
-      "linear-gradient(#444 1px, transparent 1px), linear-gradient(90deg, #444 1px, transparent 1px)",
-  },
-  effects: {
-    backdrop: "backdrop-blur-md",
-    shadow: "shadow-[0_0_20px_rgba(0,0,0,0.5)]",
-    innerGlow: "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]",
-  },
-  layout: {
-    sectionPad: "py-12 md:py-18",
-    maxWidth: "max-w-7xl",
-  },
-};
-
-export default function BentoFeatures() {
+export default function SaaSFeatureGrid() {
   return (
-    <section
-      className={`relative ${theme.layout.sectionPad} ${theme.colors.bg.main} overflow-hidden font-sans selection:bg-zinc-700/30`}>
-      {/* 1. Grid Pattern */}
-      <div
-        className="absolute inset-0 z-0 opacity-[0.05]"
-        style={{
-          backgroundImage: theme.gradients.gridPattern,
-          backgroundSize: "60px 60px",
-        }}></div>
-
-      {/* 2. Deep Ambient Glows */}
-      <div
-        className={`absolute top-0 left-1/4 w-125 h-125 ${theme.colors.bg.glow} blur-[150px] rounded-full pointer-events-none`}
-      />
-      <div
-        className={`absolute bottom-0 right-1/4 w-125 h-125 bg-purple-950/10 blur-[150px] rounded-full pointer-events-none`}
-      />
-
-      <div className={`relative z-10 ${theme.layout.maxWidth} mx-auto px-6`}>
-        {/* --- HEADER --- */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div
-            className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border ${theme.colors.border.subtle} ${theme.colors.bg.glass} ${theme.effects.backdrop} mb-6`}>
-            <span
-              className={`text-[10px] font-semibold ${theme.colors.text.subtle} uppercase tracking-[0.2em]`}>
-              Our Solution
-            </span>
-          </div>
-
-          <h2
-            className={`text-4xl md:text-5xl font-semibold tracking-tight mb-6 ${theme.colors.text.heading}`}>
-            Empower Your Business with <br className="hidden md:block" />
-            <span className={theme.gradients.metallicText}>AI Workflows</span>
+    <section className="bg-gray-50 py-24 font-sans selection:bg-blue-100">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+            Everything you need to <br className="hidden md:block" />
+            <span className="text-gray-400">scale your operations.</span>
           </h2>
-          <p
-            className={`text-lg ${theme.colors.text.body} leading-relaxed max-w-2xl mx-auto font-light`}>
-            Generic tools won't suffice. Our platform is purpose-built to
-            provide exceptional AI-driven solutions for your unique business
-            needs.
+
+          <p className="text-sm text-gray-500 leading-relaxed max-w-2xl mx-auto">
+            A unified interface for inventory tracking, and next-generation AI.
           </p>
         </div>
-
-        {/* --- BENTO GRID LAYOUT --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* 1. CARD: Advanced AI (Top Left) */}
-          <div
-            className={`group relative rounded-3xl ${theme.colors.bg.card} border ${theme.colors.border.light} p-8 overflow-hidden transition-all duration-500 hover:border-purple-500/30 hover:shadow-[0_0_40px_rgba(168,85,247,0.05)] flex flex-col`}>
-            {/* Subtle Gradient Spot */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[60px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            <div
-              className={`mb-6 w-12 h-12 rounded-xl bg-zinc-900 border ${theme.colors.border.light} flex items-center justify-center`}>
-              <Cpu className="w-5 h-5 text-purple-400" />
-            </div>
-
-            <h3
-              className={`text-xl font-medium ${theme.colors.text.heading} mb-2`}>
-              Advanced AI Algorithms
-            </h3>
-            <p
-              className={`text-sm ${theme.colors.text.body} mb-8 leading-relaxed`}>
-              Utilizing cutting-edge AI models to provide predictive analytics
-              and automated decision making.
-            </p>
-
-            {/* VISUAL PLACEHOLDER */}
-            <div
-              className={`mt-auto w-full h-48 bg-zinc-900/50 rounded-xl border ${theme.colors.border.subtle} overflow-hidden relative group-hover:border-purple-500/20 transition-colors duration-500`}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <AiScanVisual />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)]">
+          {/* 1. MAIN DASHBOARD (Sales & Stock) - Large Anchor Card */}
+          <div className="md:col-span-2 md:row-span-2 bg-white rounded-3xl border border-gray-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+            <div className="flex justify-between items-start mb-8 relative z-10">
+              <div>
+                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-4">
+                  <TrendingUp size={20} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">
+                  Executive Dashboard
+                </h3>
+                <p className="text-sm text-gray-500 mt-2 max-w-xs">
+                  Real-time view of sales performance versus available
+                  inventory.
+                </p>
               </div>
-            </div>
-          </div>
-
-          {/* 2. CARD: Secure Data (Top Middle) */}
-          <div
-            className={`group relative rounded-3xl ${theme.colors.bg.card} border ${theme.colors.border.light} p-8 overflow-hidden transition-all duration-500 hover:border-pink-500/30 hover:shadow-[0_0_40px_rgba(236,72,153,0.05)] flex flex-col`}>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-[60px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            <div
-              className={`mb-6 w-12 h-12 rounded-xl bg-zinc-900 border ${theme.colors.border.light} flex items-center justify-center`}>
-              <Lock className="w-5 h-5 text-pink-400" />
-            </div>
-
-            <h3
-              className={`text-xl font-medium ${theme.colors.text.heading} mb-2`}>
-              Secure Data Handling
-            </h3>
-            <p
-              className={`text-sm ${theme.colors.text.body} mb-8 leading-relaxed`}>
-              Enterprise-grade encryption with strict privacy protocols ensuring
-              your data never leaves the silo.
-            </p>
-
-            {/* VISUAL PLACEHOLDER */}
-            <div
-              className={`mt-auto w-full h-48 bg-zinc-900/50 rounded-xl border ${theme.colors.border.subtle} overflow-hidden relative group-hover:border-pink-500/20 transition-colors duration-500`}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <SecurityVisual />
-              </div>
-            </div>
-          </div>
-
-          {/* 3. CARD: Seamless Integration (Right Vertical) */}
-          <div
-            className={`group relative lg:row-span-2 rounded-3xl ${theme.colors.bg.card} border ${theme.colors.border.light} p-8 overflow-hidden transition-all duration-500 hover:border-indigo-500/30 hover:shadow-[0_0_40px_rgba(99,102,241,0.05)] flex flex-col`}>
-            <div
-              className={`mb-6 w-12 h-12 rounded-xl bg-zinc-900 border ${theme.colors.border.light} flex items-center justify-center`}>
-              <Zap className="w-5 h-5 text-indigo-400" />
-            </div>
-
-            <h3
-              className={`text-xl font-medium ${theme.colors.text.heading} mb-2`}>
-              Seamless Integration
-            </h3>
-            <p
-              className={`text-sm ${theme.colors.text.body} mb-8 leading-relaxed`}>
-              Plug-and-play architecture allows you to integrate AI services
-              into your existing ERP, CRM, or custom stack in minutes.
-            </p>
-
-            {/* TALL VISUAL */}
-            <div
-              className={`grow w-full min-h-75 bg-zinc-900/50 rounded-xl border ${theme.colors.border.subtle} overflow-hidden relative group-hover:border-indigo-500/20 transition-colors duration-500`}>
-              <GstVisual />
-            </div>
-          </div>
-
-          {/* 4. CARD: Customizable Solutions (Bottom Wide) */}
-          <div
-            className={`group relative lg:col-span-2 rounded-3xl ${theme.colors.bg.card} border ${theme.colors.border.light} p-8 overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-[0_0_40px_rgba(20,184,166,0.05)] flex flex-col lg:flex-row gap-8`}>
-            <div className="flex-1">
-              <div
-                className={`mb-6 w-12 h-12 rounded-xl bg-zinc-900 border ${theme.colors.border.light} flex items-center justify-center`}>
-                <Settings2 className="w-5 h-5 text-teal-400" />
-              </div>
-              <h3
-                className={`text-xl font-medium ${theme.colors.text.heading} mb-2`}>
-                Customizable Solutions
-              </h3>
-              <p
-                className={`text-sm ${theme.colors.text.body} mb-8 leading-relaxed`}>
-                Tailor our AI services to your specific needs with flexible
-                customization options, allowing you to get the most out of our
-                platform.
-              </p>
-
-              <button
-                className={`flex items-center gap-2 text-sm font-bold ${theme.colors.text.highlight} hover:text-white transition-colors group/btn`}>
-                Explore Documentation
-                <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+              <button className="text-xs font-semibold bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full text-gray-600 transition-colors">
+                View Report
               </button>
             </div>
 
-            {/* WIDE VISUAL */}
-            <div
-              className={`flex-1 w-full min-h-50 bg-zinc-900/50 rounded-xl border ${theme.colors.border.subtle} overflow-hidden relative group-hover:border-teal-500/20 transition-colors duration-500`}>
-              <PaymentVisual />
+            {/* MOCK UI: Chart Area */}
+            <div className="bg-gray-50 rounded-2xl border border-gray-100 p-6 h-64 relative overflow-hidden group-hover:border-blue-100 transition-colors">
+              <div className="flex justify-between items-end mb-4">
+                <div>
+                  <div className="text-sm text-gray-400 font-medium">
+                    Monthly Revenue
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900">
+                    $124,500
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-md flex items-center gap-1">
+                    <TrendingUp size={12} /> +12.5%
+                  </span>
+                </div>
+              </div>
+
+              {/* Bars */}
+              <div className="flex items-end justify-between gap-2 h-32 mt-auto">
+                {[35, 55, 40, 70, 50, 85, 60, 95].map((h, i) => (
+                  <div
+                    key={i}
+                    className="w-full bg-blue-100 rounded-t-md relative overflow-hidden group/bar hover:bg-blue-600 transition-colors duration-300"
+                    style={{ height: `${h}%` }}></div>
+                ))}
+              </div>
+
+              {/* Overlay Grid Lines */}
+              <div
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to bottom, transparent 95%, #e5e7eb 95%)",
+                  backgroundSize: "100% 20%",
+                }}></div>
+            </div>
+          </div>
+
+          {/* 2. PROCUREMENT / PURCHASES - Vertical List */}
+          <div className="md:col-span-1 md:row-span-2 bg-white rounded-3xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
+            <div className="mb-6 relative z-10">
+              <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 mb-4">
+                <ShoppingCart size={20} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">Procurement</h3>
+              <p className="text-xs text-gray-500 mt-1">
+                Recent purchase orders
+              </p>
+            </div>
+
+            {/* MOCK UI: PO List */}
+            <div className="space-y-3 flex-1 overflow-hidden relative">
+              {[
+                {
+                  id: "#PO-4022",
+                  item: "MacBook Pro M3",
+                  status: "Pending",
+                  color: "bg-yellow-100 text-yellow-700",
+                },
+                {
+                  id: "#PO-4021",
+                  item: "Ergo Chairs (x5)",
+                  status: "Approved",
+                  color: "bg-green-100 text-green-700",
+                },
+                {
+                  id: "#PO-4020",
+                  item: "Dell Monitors",
+                  status: "Paid",
+                  color: "bg-blue-100 text-blue-700",
+                },
+                {
+                  id: "#PO-4019",
+                  item: "USB-C Hubs",
+                  status: "Rejected",
+                  color: "bg-red-100 text-red-700",
+                },
+              ].map((po, i) => (
+                <div
+                  key={i}
+                  className="group/item flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-gray-50/50 hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                  <div>
+                    <div className="text-xs font-bold text-gray-900">
+                      {po.id}
+                    </div>
+                    <div className="text-[10px] text-gray-500">{po.item}</div>
+                  </div>
+                  <span
+                    className={`text-[10px] px-2 py-1 rounded-full font-semibold ${po.status === "Pending" ? "animate-pulse" : ""} ${po.color}`}>
+                    {po.status}
+                  </span>
+                </div>
+              ))}
+              {/* Fade at bottom */}
+              <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent"></div>
+            </div>
+          </div>
+
+          {/* 3. PAYMENTS - Compact Visual */}
+          <div className="md:col-span-1 bg-white rounded-3xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+              <CreditCard size={80} className="transform rotate-12" />
+            </div>
+
+            <div className="relative z-10">
+              <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 mb-4">
+                <CreditCard size={20} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">Payments</h3>
+
+              {/* Mock Card UI */}
+              <div className="mt-4 bg-gray-900 rounded-xl p-4 text-white shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                <div className="flex justify-between items-center mb-4 opacity-50">
+                  <CreditCard size={14} />
+                  <span className="text-[10px]">Business Corp</span>
+                </div>
+                <div className="text-lg font-mono tracking-widest mb-2">
+                  •••• 4242
+                </div>
+                <div className="flex justify-between text-[10px] opacity-70">
+                  <span>Exp 12/28</span>
+                  <span>CVC •••</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 4. USER MANAGEMENT - Compact Visual */}
+          <div className="md:col-span-1 bg-white rounded-3xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 mb-4">
+                <Users size={20} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">Team Access</h3>
+            </div>
+
+            {/* Avatar Stack */}
+            <div className="mt-4">
+              <div className="flex items-center -space-x-2 overflow-hidden mb-3 pl-2">
+                {[1, 2, 3, 4].map((_, i) => (
+                  <div
+                    key={i}
+                    className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-gray-200 flex items-center justify-center text-[10px] font-bold text-gray-500">
+                    U{i + 1}
+                  </div>
+                ))}
+                <div className="h-8 w-8 rounded-full ring-2 ring-white bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-600">
+                  +12
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <span className="px-2 py-1 bg-gray-100 rounded text-[10px] font-medium text-gray-600 border border-gray-200">
+                  Admin
+                </span>
+                <span className="px-2 py-1 bg-gray-100 rounded text-[10px] font-medium text-gray-600 border border-gray-200">
+                  Manager
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* 5. MCP SERVER / AI - Wide Dark Card */}
+          <div className="md:col-span-2 bg-gray-900 rounded-3xl p-8 shadow-xl relative overflow-hidden group">
+            {/* Gradient Effects */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600 rounded-full blur-[80px] opacity-20 group-hover:opacity-30 transition-opacity"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-600 rounded-full blur-[60px] opacity-20"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 h-full">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-2 py-1 rounded bg-white/10 border border-white/10 text-xs font-medium text-blue-200 mb-4">
+                  <Server size={12} /> MCP Protocol Ready
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  AI Agent Integration
+                </h3>
+                <p className="text-gray-400 text-sm max-w-sm">
+                  Connect external AI agents securely to read inventory and
+                  trigger automated actions via our MCP Server.
+                </p>
+              </div>
+
+              {/* Mock Terminal */}
+              <div className="w-full md:w-64 bg-black/50 backdrop-blur-md rounded-lg border border-white/10 p-3 font-mono text-[10px] shadow-2xl">
+                <div className="flex gap-1.5 mb-3">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-gray-500">
+                    # Connected to Inventory_DB
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-blue-400">➜</span>
+                    <span className="text-white">fetch_stock_levels()</span>
+                  </div>
+                  <div className="text-green-400 pl-4">{`{ "status": "200 OK", "items": 1450 }`}</div>
+                  <div className="flex gap-2 animate-pulse">
+                    <span className="text-blue-400">➜</span>
+                    <span className="text-white w-2 h-4 bg-gray-500 block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 6. APPROVALS - Wide Interactive Card */}
+          <div className="md:col-span-2 bg-white rounded-3xl border border-gray-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            <div className="flex flex-col h-full justify-between relative z-10">
+              <div className="flex justify-between items-start">
+                <div>
+                  <div className="w-10 h-10 bg-pink-50 rounded-lg flex items-center justify-center text-pink-600 mb-4">
+                    <ShieldCheck size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Smart Approvals
+                  </h3>
+                  <p className="text-sm text-gray-500 max-w-sm mt-1">
+                    Automated workflows for high-value purchase orders.
+                  </p>
+                </div>
+                <div className="hidden md:flex -space-x-1">
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-200"></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300"></div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-600 flex items-center justify-center text-white text-xs">
+                    <CheckCircle2 size={12} />
+                  </div>
+                </div>
+              </div>
+
+              {/* Mock Approval Action */}
+              <div className="mt-6 bg-gray-50 border border-gray-100 rounded-xl p-4 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded bg-white border border-gray-200 flex items-center justify-center text-gray-400">
+                    <Box size={20} />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-gray-900">
+                      Bulk Order #9921
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      $2,400.00 • Office Supplies
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button className="h-8 w-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors">
+                    <ArrowUpRight size={16} className="rotate-45" />
+                  </button>
+                  <button className="h-8 px-3 flex items-center gap-1 bg-gray-900 text-white text-xs font-semibold rounded-lg hover:bg-gray-800 transition-colors">
+                    Approve
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -218,101 +309,3 @@ export default function BentoFeatures() {
     </section>
   );
 }
-
-// --- VISUAL COMPONENTS (Dark Mode Styled) ---
-
-const GstVisual = () => (
-  <div className="relative w-full h-full bg-[#0F0F0F] flex items-center justify-center overflow-hidden">
-    <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent_50%)]"></div>
-
-    <div className="bg-[#18181b] w-64 p-4 rounded-xl shadow-2xl border border-white/5 relative rotate-3 group-hover:rotate-0 transition-transform duration-500">
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-[10px] font-bold text-zinc-500 tracking-wider">
-          TAX INVOICE
-        </span>
-        <div className="p-1 bg-emerald-500/10 rounded text-emerald-400">
-          <FileText size={12} />
-        </div>
-      </div>
-
-      <div className="space-y-2 mb-4">
-        <div className="h-2 w-1/2 bg-zinc-800 rounded"></div>
-        <div className="h-2 w-3/4 bg-zinc-800 rounded"></div>
-      </div>
-
-      <div className="flex justify-between items-end border-t border-white/5 pt-3">
-        <div>
-          <div className="text-[10px] text-zinc-500">Total Amount</div>
-          <div className="text-lg font-bold text-zinc-200 flex items-center gap-2">
-            ₹ 18,240
-          </div>
-        </div>
-        <span className="text-[9px] text-emerald-400 font-medium bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
-          GST Verified
-        </span>
-      </div>
-    </div>
-
-    <div className="absolute bottom-6 left-8 bg-[#222] px-3 py-1.5 rounded-full text-[10px] font-medium text-zinc-300 shadow-xl border border-white/10 flex items-center gap-2 z-10">
-      <Calculator size={10} className="text-emerald-400" />
-      <span>Auto-Calculated</span>
-    </div>
-  </div>
-);
-
-const PaymentVisual = () => (
-  <div className="relative w-full h-full bg-[#0F0F0F] flex items-center justify-center overflow-hidden">
-    <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(20,184,166,0.1),transparent_50%)]"></div>
-
-    {/* Phone Mockup */}
-    <div className="w-24 h-40 bg-zinc-950 rounded-xl border-2 border-zinc-800 relative shadow-2xl transform -rotate-12 translate-y-2 translate-x-4 group-hover:-rotate-6 transition-transform duration-500 z-0">
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-zinc-800 rounded-full"></div>
-      <div className="w-full h-full rounded-lg flex flex-col items-center justify-center p-2">
-        <div className="w-8 h-8 bg-zinc-900 rounded-full border border-white/10 flex items-center justify-center text-teal-400 mb-2">
-          <Smartphone size={14} />
-        </div>
-        <div className="space-y-1 w-full px-2">
-          <div className="h-1 w-full bg-zinc-800 rounded-full"></div>
-          <div className="h-1 w-2/3 bg-zinc-800 rounded-full mx-auto"></div>
-        </div>
-      </div>
-    </div>
-
-    {/* Floating Card */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-8 -translate-y-8 bg-linear-to-br from-zinc-800 to-black w-32 h-20 rounded-xl shadow-2xl border-t border-white/10 flex flex-col justify-between p-3 transform rotate-6 z-10 group-hover:rotate-3 transition-transform duration-500">
-      <div className="flex justify-between items-start">
-        <div className="w-6 h-4 bg-white/10 rounded"></div>
-        <div className="text-[8px] text-zinc-500">VISA</div>
-      </div>
-      <div className="text-[10px] text-zinc-300 font-mono tracking-widest">
-        **** 4242
-      </div>
-    </div>
-  </div>
-);
-
-const AiScanVisual = () => (
-  <div className="relative w-full h-full bg-[#0F0F0F] flex items-center justify-center">
-    <div className="w-32 h-32 border border-purple-500/20 rounded-full flex items-center justify-center relative">
-      <div className="absolute inset-0 border border-purple-500/10 rounded-full animate-ping"></div>
-      <ScanFace className="text-purple-500/50" size={32} />
-    </div>
-    <div className="absolute bottom-4 bg-[#111] border border-white/10 px-3 py-1 rounded-full text-[10px] text-zinc-400 flex items-center gap-2">
-      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
-      Analyzing Pattern...
-    </div>
-  </div>
-);
-
-const SecurityVisual = () => (
-  <div className="relative w-full h-full bg-[#0F0F0F] flex items-center justify-center gap-4">
-    {/* Abstract Shield Layers */}
-    <div className="absolute w-24 h-28 bg-pink-500/5 rounded-xl blur-xl"></div>
-    <div className="w-16 h-20 bg-linear-to-b from-zinc-800 to-black border border-white/10 rounded-lg flex items-center justify-center z-10 shadow-2xl">
-      <Lock size={16} className="text-zinc-500" />
-    </div>
-    <div className="w-16 h-20 bg-linear-to-b from-zinc-800 to-black border border-pink-500/20 rounded-lg flex items-center justify-center z-20 shadow-2xl -ml-8 -mt-4">
-      <Lock size={16} className="text-pink-400" />
-    </div>
-  </div>
-);

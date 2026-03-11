@@ -1,18 +1,23 @@
 "use client";
 import { motion } from "framer-motion";
-import inv from "@/assets/images/Inv-bg.png";
+import inv from "@/assets/images/inv_so.png";
 import Image from "next/image";
 
 import { ArrowRight, CheckCircle2, Play } from "lucide-react";
 
 export default function HeroSection() {
-  const handleOpenInventoryApp = () => {
-    window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+  const handleOpenInventoryApp = (type: string) => {
+    if (type === "demo") {
+      window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+    }
+    if (type === "booking") {
+      window.open("https://app.ez-hub.in/login?booking=true", "_blank");
+    }
   };
 
   return (
     <section>
-      <main className="relative pt-32 md:pt-48 pb-16 md:pb-24 px-4 md:px-6 max-w-[1200px] mx-auto flex flex-col items-center">
+      <main className="relative pt-32 md:pt-48 pb-16 md:pb-24 px-4 md:px-6 max-w-300 mx-auto flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,9 +77,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-20 w-full max-w-5xl rounded-2xl border border-gray-200 bg-gray-50/50 p-1 shadow-sm overflow-hidden"
+          className="mt-20 w-full max-w-5xl rounded-2xl border border-gray-300 shadow-sm bg-gray-300 overflow-hidden"
         >
-          <div className="rounded-xl border border-gray-200 bg-white aspect-[16/9] flex items-center justify-center text-gray-300 font-medium">
+          <div>
             {/* Replace this with an actual screenshot of your app */}
             <Image
               src={inv}
