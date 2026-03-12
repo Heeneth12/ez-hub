@@ -1,8 +1,8 @@
 "use client";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import inv from "@/assets/images/inv_so.png";
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ArrowRight, CheckCircle2, Play, Sparkles } from "lucide-react";
 
@@ -60,22 +60,6 @@ const AnimatedBadge = () => {
 };
 
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 40, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 40, damping: 20 });
-  const rotateX = useTransform(springY, [-300, 300], [3, -3]);
-  const rotateY = useTransform(springX, [-400, 400], [-4, 4]);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mouseX.set(e.clientX - rect.left - rect.width / 2);
-    mouseY.set(e.clientY - rect.top - rect.height / 2);
-  };
-
   const handleOpenInventoryApp = (type: string) => {
     if (type === "demo") window.open("https://app.ez-hub.in/login?demo=true", "_blank");
     if (type === "booking") window.open("https://app.ez-hub.in/login?booking=true", "_blank");
@@ -84,7 +68,7 @@ export default function HeroSection() {
   const features = ['GST Ready', 'Cloud Sync', '24/7 Support'];
 
   return (
-    <section ref={containerRef} onMouseMove={handleMouseMove} className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white">
 
       {/* ── LIGHT GRID BACKGROUND ── */}
       <div
@@ -230,13 +214,12 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Product image with 3D tilt */}
+        {/* NORMAL Product image (3D tilt removed) */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1.2, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          style={{ rotateX, rotateY, transformPerspective: 1200 }}
-          className="mt-20 w-full max-w-5xl"
+          className="mt-20 w-full max-w-5xl relative"
         >
           <motion.div
             className="absolute inset-x-8 bottom-0 h-16 rounded-full blur-2xl bg-[#FF451A] pointer-events-none"

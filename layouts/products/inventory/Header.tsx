@@ -5,10 +5,11 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-    { label: "Features", href: "#" },
-    { label: "Pricing", href: "#" },
+    { label: "Features", href: "/inventory/features" },
+    { label: "Pricing", href: "/inventory/pricing" },
     { label: "Blog", href: "#" },
     { label: "Contact", href: "#" },
 ];
@@ -16,6 +17,7 @@ const NAV_LINKS = [
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [resourcesOpen, setResourcesOpen] = useState(false);
+    const pathname = usePathname();
 
     const handleOpenInventoryApp = (type: string) => {
         if (type === "demo") {
@@ -34,12 +36,19 @@ export default function Header() {
                 <Logo />
 
                 {/* Desktop Nav Links */}
-                <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide text-gray-500">
-                    {NAV_LINKS.map(({ label }) => (
-                        <a key={label} href="#" className="hover:text-black transition-colors duration-300">
-                            {label}
-                        </a>
-                    ))}
+                <div className="hidden lg:flex items-center gap-2 text-[13px] font-medium tracking-wide text-gray-500">
+                    {NAV_LINKS.map(({ label, href }) => {
+                        const isActive = pathname === href;
+                        return (
+                            <Link
+                                key={label}
+                                href={href}
+                                className={`px-4 py-2 rounded-full transition-all duration-300 ${isActive ? 'bg-gray-100 text-black font-semibold' : 'hover:text-black hover:bg-gray-50/50'}`}
+                            >
+                                {label}
+                            </Link>
+                        );
+                    })}
 
                     {/* Resources Dropdown Toggle */}
                     {/* <div className="relative">
@@ -89,7 +98,7 @@ export default function Header() {
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         className="w-9 h-9 flex flex-col items-center justify-center gap-1.25 rounded-lg hover:bg-gray-50 transition"
                     >
-                        <MenuIcon className="text-gray-500"/>
+                        <MenuIcon className="text-gray-500" />
                     </button>
                 </div>
             </div>
@@ -105,16 +114,19 @@ export default function Header() {
                         className="overflow-hidden lg:hidden border-t border-gray-100 bg-white"
                     >
                         <div className="px-4 py-4 flex flex-col gap-1">
-                            {NAV_LINKS.map(({ label }) => (
-                                <a
-                                    key={label}
-                                    href="#"
-                                    className="py-3 px-2 text-[15px] font-medium text-gray-700 hover:text-black border-b border-gray-50 last:border-0 transition-colors"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    {label}
-                                </a>
-                            ))}
+                            {NAV_LINKS.map(({ label, href }) => {
+                                const isActive = pathname === href;
+                                return (
+                                    <Link
+                                        key={label}
+                                        href={href}
+                                        className={`py-3 px-4 rounded-xl text-[15px] font-medium transition-colors ${isActive ? 'bg-gray-50 text-black font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        {label}
+                                    </Link>
+                                );
+                            })}
                             <button
                                 className="mt-3 bg-[#FF451A] text-white text-center py-3 rounded-full text-[13px] font-bold active:scale-95 transition-transform"
                                 onClick={() => {
@@ -134,7 +146,7 @@ export default function Header() {
 
 const Logo = () => (
     <Link
-        href="/"
+        href="/inventory"
         className="group flex items-center active:scale-[0.98] transition-transform duration-200 focus:outline-none rounded-lg"
         aria-label="EZ Hub Home"
     >
