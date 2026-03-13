@@ -228,7 +228,7 @@ export default function HeroSection() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          <div className="relative rounded-2xl border border-gray-200 shadow-[0_8px_40px_rgba(0,0,0,0.08)] bg-gray-100 overflow-hidden">
+          <div className="relative rounded-2xl border border-gray-200 shadow-[0_8px_40px_rgba(0,0,0,0.08)] bg-gray-200 overflow-hidden">
             <div className="flex items-center gap-1.5 px-4 py-3 bg-white border-b border-gray-100">
               {["#FF5F56", "#FFBD2E", "#27C93F"].map((color) => (
                 <div key={color} className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />

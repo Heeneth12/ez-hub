@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "@/assets/images/new.png";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
@@ -16,8 +16,21 @@ const NAV_LINKS = [
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [resourcesOpen, setResourcesOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const handleOpenInventoryApp = (type: string) => {
         if (type === "demo") {
@@ -29,14 +42,10 @@ export default function Header() {
     };
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <nav className={`fixed top-0 w-full z-50 transition-all duration-300 border-b border-gray-100 ${isScrolled ? 'bg-gray-100/50 backdrop-blur-md' : 'bg-transparent'}`}>
             <div className="max-w-350 mx-auto flex items-center justify-between px-4 md:px-8 h-16">
-
-                {/* Logo */}
                 <Logo />
-
-                {/* Desktop Nav Links */}
-                <div className="hidden lg:flex items-center gap-2 text-[13px] font-medium tracking-wide text-gray-500">
+                <div className="hidden lg:flex items-center gap-2 text-[13px] font-medium tracking-wide text-gray-700">
                     {NAV_LINKS.map(({ label, href }) => {
                         const isActive = pathname === href;
                         return (
