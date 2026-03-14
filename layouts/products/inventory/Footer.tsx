@@ -11,10 +11,39 @@ const SOCIAL_LINKS = [
 ];
 
 const FOOTER_COLUMNS = [
-  { heading: "Product", links: ["Style Transfer", "API Access", "Integrations"] },
-  { heading: "Industries", links: ["Fashion & Retail", "Hospitality", "Agencies"] },
-  { heading: "Resources", links: ["Documentation", "Blog", "Community"] },
-  { heading: "Company", links: ["About","Contact", "Pricing"] },
+  {
+    heading: "Product",
+    links: [
+      { name: "Style Transfer", href: "#" },
+      { name: "API Access", href: "#" },
+      { name: "Integrations", href: "#" },
+    ],
+  },
+  {
+    heading: "Industries",
+    links: [
+      { name: "Fashion & Retail", href: "#" },
+      { name: "Hospitality", href: "#" },
+      { name: "Agencies", href: "#" },
+    ],
+  },
+  {
+    heading: "Resources",
+    links: [
+      { name: "Documentation", href: "#" },
+      { name: "Blog", href: "/blog" },
+      { name: "Help Center", href: "/help-center" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { name: "About", href: "/about" },
+      { name: "Contact", href: "/contact" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms", href: "/terms" },
+    ],
+  },
 ];
 
 export default function Footer() {
@@ -106,12 +135,12 @@ export default function Footer() {
                 </p>
                 {links.map((link) => (
                   <a
-                    key={link}
-                    href="#"
+                    key={link.name}
+                    href={link.href}
                     className="group flex items-center gap-1 text-white/30 text-[13px] leading-snug transition-all duration-150 hover:text-white/80"
                     style={{ fontFamily: "inherit" }}
                   >
-                    <span>{link}</span>
+                    <span>{link.name}</span>
                     <ArrowUpRight
                       size={10}
                       className="opacity-0 group-hover:opacity-60 -translate-y-0.5 group-hover:translate-y-0 transition-all duration-150"

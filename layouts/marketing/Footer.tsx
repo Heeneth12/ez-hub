@@ -10,18 +10,18 @@ export default function Footer() {
       { name: "Enterprise", href: "#" },
     ],
     company: [
-      { name: "About Us", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Contact", href: "#" },
+      { name: "About Us", href: "/about" },
+      { name: "Blog", href: "/blog" },
+      { name: "Contact", href: "/contact" },
     ],
     resources: [
       { name: "Community", href: "#" },
-      { name: "Help Center", href: "#" },
+      { name: "Help Center", href: "/help-center" },
       { name: "API Docs", href: "#" },
     ],
     legal: [
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms", href: "/terms" },
       { name: "Cookie Policy", href: "#" },
     ],
   };
