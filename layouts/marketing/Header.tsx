@@ -23,6 +23,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -31,6 +32,21 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (!(event.target instanceof HTMLElement)) {
+        return;
+      }
+
+      if (!event.target.closest("[data-products-dropdown]")) {
+        setDesktopDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
   }, []);
 
   return (
@@ -42,21 +58,41 @@ export default function Header() {
       }`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 font-sans">
         <div className="flex lg:flex-1">
-          <a href="/" className="group flex items-center gap-2">
+          <Link href="/" className="group flex items-center gap-2">
             <Image src={logo} alt="EZ Hub Logo" className="h-14 w-auto" />
-          </a>
+          </Link>
         </div>
 
         <div className="hidden lg:flex lg:gap-x-8 items-center">
           {navigation.map((item) => (
-            <div key={item.name} className="relative group">
+            <div
+              key={item.name}
+              className="relative group"
+              data-products-dropdown={item.dropdown ? true : undefined}>
               {item.dropdown ? (
                 <>
-                  <button className="flex items-center gap-1 text-[15px] font-medium text-white transition-colors group-hover:text-gray-300 py-2 outline-none">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setDesktopDropdownOpen((prevOpen) => !prevOpen)
+                    }
+                    className="flex items-center gap-1 text-[15px] font-medium text-white transition-colors group-hover:text-gray-300 py-2 outline-none"
+                    aria-expanded={desktopDropdownOpen}
+                    aria-haspopup="menu">
                     {item.name}
-                    <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        desktopDropdownOpen ? "rotate-180" : ""
+                      } group-hover:rotate-180`}
+                    />
                   </button>
-                  <div className="absolute left-0 top-full mt-2 w-48 origin-top-right rounded-xl bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out overflow-hidden">
+                  <div
+                    className={`absolute left-0 top-full mt-2 w-48 origin-top-right rounded-xl bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-200 ease-out overflow-hidden ${
+                      desktopDropdownOpen
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible translate-y-2"
+                    } group-hover:opacity-100 group-hover:visible group-hover:translate-y-0`}
+                    role="menu">
                     <div className="py-1">
                       {item.dropdown.map((subItem) => (
                         <a
