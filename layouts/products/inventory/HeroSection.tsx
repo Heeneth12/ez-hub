@@ -61,8 +61,8 @@ const AnimatedBadge = () => {
 
 export default function HeroSection() {
   const handleOpenInventoryApp = (type: string) => {
-    if (type === "demo") window.open("https://app.ez-hub.in/login?demo=true", "_blank");
-    if (type === "booking") window.open("https://app.ez-hub.in/login?booking=true", "_blank");
+    if (type === "demo") window.open("https://app.ez-hub.in/auth/login?demo=true", "_blank");
+    if (type === "booking") window.open("https://app.ez-hub.in/auth/login?booking=true", "_blank");
   };
 
   const features = ['GST Ready', 'Cloud Sync', '24/7 Support'];

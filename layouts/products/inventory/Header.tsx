@@ -34,10 +34,10 @@ export default function Header() {
 
     const handleOpenInventoryApp = (type: string) => {
         if (type === "demo") {
-            window.open("https://app.ez-hub.in/login?demo=true", "_blank");
+            window.open("https://app.ez-hub.in/auth/login?demo=true", "_blank");
         }
         if (type === "login") {
-            window.open("https://app.ez-hub.in/login", "_blank");
+            window.open("https://app.ez-hub.in/auth/login", "_blank");
         }
     };
 
